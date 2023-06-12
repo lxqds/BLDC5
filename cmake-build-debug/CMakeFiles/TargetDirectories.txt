@@ -1,0 +1,3 @@
+C:/Users/27825/OneDrive/2023/BLDC/BLDC5/cmake-build-debug/CMakeFiles/BLDC5.elf.dir
+C:/Users/27825/OneDrive/2023/BLDC/BLDC5/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/27825/OneDrive/2023/BLDC/BLDC5/cmake-build-debug/CMakeFiles/rebuild_cache.dir
