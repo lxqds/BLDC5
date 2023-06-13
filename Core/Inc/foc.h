@@ -49,5 +49,6 @@ typedef struct
 
 
 float velocityOpenloop(float target_velocity);
+float angleOpenloop(float target_angle);
 void foc_Init();
 #endif //BLDC5_FOC_H

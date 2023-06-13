@@ -7,11 +7,15 @@
 #include "tim.h"
 #define pi 3.1415926
 #define _constrain(amt,low,high) ((amt)<(low)?(low):((amt)>(high)?(high):(amt)))
-float voltage_limit = 8;
+#define pole_pairs 6
+float voltage_limit = 4;
 float voltage_power_supply = 12;
 float shaft_angle = 0;
 unsigned long open_loop_timestamp;
 float zero_electric_angle = 0,Ualpha,Ubera=0,Ua=0,Ub=0,Uc=0,dc_a=0,dc_b=0,dc_c=0;
+
+float velocity_limit = 10;
+
 
 void foc_Init()
 {
@@ -27,9 +31,9 @@ void foc_Init()
 
 }
 //电角度求解
-float _electricalAngle(float shaft_angle,int pole_pairs)
+float _electricalAngle(float shaft_angle,int _pole_pairs)
 {
-    return (shaft_angle * pole_pairs);
+    return (shaft_angle * _pole_pairs);
 }
 
 //归一化角度到（0，2pi）
@@ -120,8 +124,8 @@ float _normalizeAngle2(float angle){
 }
 /***************************************************************************/
 // Electrical angle calculation
-float _electricalAngle2(float shaft_angle, int pole_pairs) {
-    return (shaft_angle * pole_pairs);
+float _electricalAngle2(float shaft_angle, int _pole_pairs) {
+    return (shaft_angle * _pole_pairs);
 }
 /***************************************************************************/
 // square root approximation function using
@@ -230,10 +234,39 @@ float velocityOpenloop(float target_velocity)
 
     float Uq = voltage_limit;
 
-    setPhaseVoltage2(Uq,0, _electricalAngle(shaft_angle,6));
+    setPhaseVoltage2(Uq,0, _electricalAngle(shaft_angle,pole_pairs));
 
     return Uq;
 }
 
+/******************************************************************************/
+float angleOpenloop(float target_angle) {
+    unsigned long now_us;
+    float Ts, Uq;
 
+    now_us = SysTick->VAL; //_micros();
+    if (now_us < open_loop_timestamp)Ts = (float) (open_loop_timestamp - now_us) / 150 * 1e-6;
+    else
+        Ts = (float) (0xFFFFFF - now_us + open_loop_timestamp) / 150 * 1e-6;
+    open_loop_timestamp = now_us;  //save timestamp for next call
+    // quick fix for strange cases (micros overflow)
+    if (Ts == 0 || Ts > 0.5) Ts = 1e-3;
+
+    // calculate the necessary angle to move from current position towards target angle
+    // with maximal velocity (velocity_limit)
+    if (fabs(target_angle - shaft_angle) > velocity_limit * Ts) {
+        shaft_angle += _sign(target_angle - shaft_angle) * velocity_limit * Ts;
+        //shaft_velocity = velocity_limit;
+    } else {
+        shaft_angle = target_angle;
+        //shaft_velocity = 0;
+    }
+
+    Uq = voltage_limit;
+    // set the maximal allowed voltage (voltage_limit) with the necessary angle
+    setPhaseVoltage(Uq, 0, _electricalAngle(shaft_angle, pole_pairs));
+
+    return Uq;
+}
+/******************************************************************************/
 

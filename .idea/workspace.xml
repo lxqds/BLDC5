@@ -17,40 +17,19 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e23143c5-3df2-4a48-9b8f-f76c1e4bc1ba" name="Changes" comment="读取电机角度">
-      <change afterPath="$PROJECT_DIR$/Core/Inc/I_Current.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/Src/I_Current.c" afterDir="false" />
+    <list default="true" id="e23143c5-3df2-4a48-9b8f-f76c1e4bc1ba" name="Changes" comment="电机正常运转，噪声小，但是对于开环速度要求为10rad/s">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLDC5.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/BLDC5.ioc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Inc/AS5047.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/AS5047.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Inc/foc.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/foc.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Inc/stm32g4xx_it.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/stm32g4xx_it.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Inc/tim.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/tim.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/AS5047.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/AS5047.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/foc.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/foc.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/interrupt.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/interrupt.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/stm32g4xx_it.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/stm32g4xx_it.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/tim.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/tim.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-db133476e74e02aff13a.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-06-12T04-24-14-0580.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-BLDC5.elf-Debug-141af908999c642d082d.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/BLDC5.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/BLDC5.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/BLDC5.elf" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/BLDC5.elf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/BLDC5.hex" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/BLDC5.hex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/BLDC5.map" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/BLDC5.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/AS5047.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/AS5047.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +119,7 @@
       <workItem from="1686450348059" duration="1031000" />
       <workItem from="1686458929790" duration="3236000" />
       <workItem from="1686462203002" duration="13638000" />
-      <workItem from="1686535132669" duration="31304000" />
+      <workItem from="1686535132669" duration="39429000" />
     </task>
     <task id="LOCAL-00001" summary="读取电机角度">
       <created>1686546314615</created>
@@ -149,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686546314615</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="电机正常运转，噪声小，但是对于开环速度要求为10rad/s">
+      <created>1686655568382</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1686655568382</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,6 +143,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="读取电机角度" />
-    <option name="LAST_COMMIT_MESSAGE" value="读取电机角度" />
+    <MESSAGE value="电机正常运转，噪声小，但是对于开环速度要求为10rad/s" />
+    <option name="LAST_COMMIT_MESSAGE" value="电机正常运转，噪声小，但是对于开环速度要求为10rad/s" />
   </component>
 </project>
