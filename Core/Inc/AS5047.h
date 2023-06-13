@@ -10,7 +10,7 @@
 #define AS5047_CS_H HAL_GPIO_WritePin(GPIOB,GPIO_PIN_11,GPIO_PIN_SET)
 
 #define AS5047P_CPR      16384      //14bit
-#define _2PI 6.28318530718f
+//#define _2PI 6.28318530718f
 
 uint16_t AS5047_Get_Raw_Angle(void);      //直接读取寄存器的未经处理
 float Get_Angle(void);

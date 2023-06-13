@@ -95,6 +95,7 @@ int main(void)
   MX_TIM1_Init();
   MX_USART2_UART_Init();
   MX_TIM2_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
     Sensor_lnit();
 
@@ -109,8 +110,10 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-      HAL_Delay(200);
-      Get_Angle2();
+      velocityOpenloop(10);
+      /*HAL_Delay(200);
+
+      Get_Angle2();*/
       /*char buf[100];
       HAL_Delay(500);
       HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_0);

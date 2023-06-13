@@ -6,24 +6,7 @@ static uint16_t Raw_angle = 0;
 static float angle_data_prev; //上次位置
 static float full_rotation_offset; //转过的整圈数
 
-uint16_t AS5047_Get_Raw_Angle(void)      //直接读取寄存器的未经处理
-{
 
-}
-float Get_Angle(void)
-{
-    float Angle_data = AS5047_Get_Raw_Angle();
-    float Angle_Error = Angle_data - angle_data_prev;
-
-    if(abs(Angle_Error) > (0.8f * AS5047P_CPR))
-    {
-        full_rotation_offset += (Angle_Error > 0 ? -_2PI : _2PI);
-    }
-
-    angle_data_prev = Angle_data;
-
-    return (full_rotation_offset + (Angle_data) / (float)(AS5047P_CPR) * _2PI);
-}
 
 /**SPI1 GPIO Configuration
     PB15     ------> SPI1_SCK
@@ -212,24 +195,6 @@ uint8_t SOFT_SPI_RW_MODE3( uint8_t write_dat )
     }
     return read_dat;
 }
-/*void Sensor_lnit(void)
-{
-    hspi2.Instance = SPI2;
-    hspi2.Init.Mode = SPI_MODE_MASTER;
-    hspi2.Init.Direction = SPI_DIRECTION_2LINES;
-    hspi2.Init.DataSize = SPI_DATASIZE_16BIT;
-    hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
-    hspi2.Init.CLKPhase = SPI_PHASE_2EDGE;
-    hspi2.Init.NSS = SPI_NSS_SOFT;
-    hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_32;
-    hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
-    hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
-    hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
-    hspi2.Init.CRCPolynomial = 7;
-    hspi2.Init.CRCLength = SPI_CRC_LENGTH_DATASIZE;
-    hspi2.Init.NSSPMode = SPI_NSS_PULSE_ENABLE;
-
-}*/
 
 uint16_t SPIx_ReadWrite_Byte(uint16_t WriteByte,uint16_t ReadByte)
 {
