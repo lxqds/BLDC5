@@ -5,20 +5,47 @@
 #include <math.h>
 #include "stm32g4xx_hal.h"
 #include "tim.h"
+#include "retarget.h"
+#include "AS5047.h"
 #define pi 3.1415926
 #define _constrain(amt,low,high) ((amt)<(low)?(low):((amt)>(high)?(high):(amt)))
-#define pole_pairs 6
+
+
+long sensor_direction;
+float voltage_sensor_align;
+
+int pole_pairs = 6;
 float voltage_limit = 4;
 float voltage_power_supply = 12;
-float shaft_angle = 0;
+
 unsigned long open_loop_timestamp;
 float zero_electric_angle = 0,Ualpha,Ubera=0,Ua=0,Ub=0,Uc=0,dc_a=0,dc_b=0,dc_c=0;
 
 float velocity_limit = 10;
 
+float shaft_angle = 0;//!< current motor angle
+float electrical_angle;
+float shaft_velocity;
+float current_sp;
+float shaft_velocity_sp;
+float shaft_angle_sp;
+
+DQVoltage_s voltage;
+DQCurrent_s current;
+
+TorqueControlType torque_controller;
+MotionControlType controller;
+
+float sensor_offset=0;
+
 
 void foc_Init()
 {
+    voltage_limit = 4;
+    voltage_power_supply = 12;
+    shaft_angle = 0;
+    velocity_limit =10;
+
     HAL_GPIO_WritePin(GPIOA,GPIO_PIN_11,SET);
     HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
     HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_2);
@@ -228,7 +255,7 @@ float velocityOpenloop(float target_velocity)
         Ts = (float) (0xFFFFFF - now_us + open_loop_timestamp) / 150 * 1e-6;//150分频
     open_loop_timestamp = now_us;  //save timestamp for next call
 
-    shaft_angle = _normallizeAngle(shaft_angle + target_velocity*Ts);//计算所需转动的机械角度，
+    shaft_angle = _normalizeAngle2(shaft_angle + target_velocity*Ts);//计算所需转动的机械角度，
 
     if (Ts == 0 || Ts > 0.5) Ts = 1e-3;
 
@@ -269,4 +296,48 @@ float angleOpenloop(float target_angle) {
     return Uq;
 }
 /******************************************************************************/
+float y_vel_prev=0;
+float LPF_velocity(float x)
+{
+    float y = 0.9*y_vel_prev + 0.1*x;
 
+    y_vel_prev=y;
+
+    return y;
+}
+
+// shaft angle calculation
+float shaftAngle(void)
+{
+    // if no sensor linked return previous value ( for open loop )
+    //if(!sensor) return shaft_angle;
+    return sensor_direction*Get_Angle2() - sensor_offset;
+}
+// shaft velocity calculation
+float shaftVelocity(void)
+{
+    // if no sensor linked return previous value ( for open loop )
+    //if(!sensor) return shaft_velocity;
+    return sensor_direction*LPF_velocity(getVelocity());
+}
+/******************************************************************************/
+float electricalAngle(void)
+{
+    return _normalizeAngle2((shaft_angle + sensor_offset) * pole_pairs - zero_electric_angle);
+}
+int alignSensor(void)
+{
+    sensor_direction = 0;//
+
+    setPhaseVoltage(voltage_sensor_align, 0, _3PI_2);  //计算零点偏移角度
+    HAL_Delay(700);
+    zero_electric_angle = 5.0100;//_normalizeAngle(_electricalAngle(sensor_direction*getAngle(), pole_pairs));
+    HAL_Delay(20);
+    printf("MOT: Zero elec. angle:");
+    printf("%.4f\r\n", zero_electric_angle);
+
+    setPhaseVoltage(0, 0, 0);
+    HAL_Delay(200);
+
+    return 1;
+}

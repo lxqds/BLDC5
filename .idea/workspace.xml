@@ -17,17 +17,19 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e23143c5-3df2-4a48-9b8f-f76c1e4bc1ba" name="Changes" comment="电机正常运转，噪声小，但是对于开环速度要求为10rad/s">
+    <list default="true" id="e23143c5-3df2-4a48-9b8f-f76c1e4bc1ba" name="Changes" comment="开环速度控制最优10rad/s,电压限制4V，电源电压限制12V，分频150，开环角度控制">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Inc/AS5047.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/AS5047.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Inc/foc.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/foc.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/AS5047.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/AS5047.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/foc.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/foc.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/BLDC5.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/BLDC5.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/BLDC5.elf" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/BLDC5.elf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/BLDC5.hex" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/BLDC5.hex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/BLDC5.map" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/BLDC5.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/AS5047.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/AS5047.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj" afterDir="false" />
     </list>
@@ -119,7 +121,7 @@
       <workItem from="1686450348059" duration="1031000" />
       <workItem from="1686458929790" duration="3236000" />
       <workItem from="1686462203002" duration="13638000" />
-      <workItem from="1686535132669" duration="39429000" />
+      <workItem from="1686535132669" duration="42024000" />
     </task>
     <task id="LOCAL-00001" summary="读取电机角度">
       <created>1686546314615</created>
@@ -135,7 +137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686655568382</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="开环速度控制最优10rad/s,电压限制4V，电源电压限制12V，分频150，开环角度控制">
+      <created>1686665048709</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1686665048709</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,6 +153,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="读取电机角度" />
     <MESSAGE value="电机正常运转，噪声小，但是对于开环速度要求为10rad/s" />
-    <option name="LAST_COMMIT_MESSAGE" value="电机正常运转，噪声小，但是对于开环速度要求为10rad/s" />
+    <MESSAGE value="开环速度控制最优10rad/s,电压限制4V，电源电压限制12V，分频150，开环角度控制" />
+    <option name="LAST_COMMIT_MESSAGE" value="开环速度控制最优10rad/s,电压限制4V，电源电压限制12V，分频150，开环角度控制" />
   </component>
 </project>

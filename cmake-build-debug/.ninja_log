@@ -105,3 +105,11 @@
 9	147	7083661941400510	CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj	aa2dc48feeda30e9
 2	151	7083663381753441	CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj	4cd7f1f4d452dc1e
 152	343	7083663383109818	BLDC5.elf	cf4aeeb613a37d72
+11	679	7084117586718176	CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj	aa2dc48feeda30e9
+18	689	7084117586867784	CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj	3a41943dac207e6b
+14	698	7084117586977492	CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj	72bcfeaf198c2347
+2	701	7084117586997435	CMakeFiles/BLDC5.elf.dir/Core/Src/AS5047.c.obj	59ae507bd6ab74e3
+11	139	7084121925822018	CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj	72bcfeaf198c2347
+3	166	7084121926101280	CMakeFiles/BLDC5.elf.dir/Core/Src/AS5047.c.obj	59ae507bd6ab74e3
+7	197	7084121926410445	CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj	4cd7f1f4d452dc1e
+197	580	7084121929652056	BLDC5.elf	cf4aeeb613a37d72

@@ -15,5 +15,6 @@
 uint16_t AS5047_Get_Raw_Angle(void);      //直接读取寄存器的未经处理
 float Get_Angle(void);
 void Sensor_lnit(void);
-void Get_Angle2();
+float Get_Angle2();
+float getVelocity(void);
 #endif

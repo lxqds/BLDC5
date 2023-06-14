@@ -5,7 +5,8 @@ uint16_t AS5047P_ADD[3] = {0x3FFF,0x01,0x00};
 static uint16_t Raw_angle = 0;
 static float angle_data_prev; //上次位置
 static float full_rotation_offset; //转过的整圈数
-
+unsigned long velocity_calc_timestamp;
+float angle_prev;
 
 
 /**SPI1 GPIO Configuration
@@ -237,14 +238,39 @@ uint16_t Write_Register(uint16_t addr,uint16_t data)
     AS5047_CS_H;
 }
 
-void Get_Angle2()
+float Get_Angle2()
 {
-    uint16_t a,b;
+    uint16_t a;
+    float b;
     a=Read_Register(0x3FFC)&0x0fff;     //AGC=>bit11:MAGL,bit10:MAGH,bit7-0:AGC   0x01AD
     b=((float)(Read_Register(0x3FFF)&0x3fff)*360)/16384;   //angle
     printf("AGC=%X,Angle=%d\r\n",a,b);
+    return b;
 }
 
+float getVelocity(void)
+{
+    unsigned long now_us;
+    float Ts, angle_c, vel;
+
+    // calculate sample time
+    now_us = SysTick->VAL; //_micros();
+    if(now_us<velocity_calc_timestamp)Ts = (float)(velocity_calc_timestamp - now_us)/9*1e-6;
+    else
+        Ts = (float)(0xFFFFFF - now_us + velocity_calc_timestamp)/9*1e-6;
+    // quick fix for strange cases (micros overflow)
+    if(Ts == 0 || Ts > 0.5) Ts = 1e-3;
+
+    // current angle
+    angle_c = Get_Angle2();
+    // velocity calculation
+    vel = (angle_c - angle_prev)/Ts;
+
+    // save variables for future pass
+    angle_prev = angle_c;
+    velocity_calc_timestamp = now_us;
+    return vel;
+}
 void Sensor_lnit(void)
 {
     SPI_Init();
