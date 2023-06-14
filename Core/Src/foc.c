@@ -278,7 +278,7 @@ float angleOpenloop(float target_angle) {
 
     Uq = voltage_limit;
     // set the maximal allowed voltage (voltage_limit) with the necessary angle
-    setPhaseVoltage(Uq, 0, _electricalAngle(shaft_angle, pole_pairs));
+    setPhaseVoltage2(Uq, 0, _electricalAngle(shaft_angle, pole_pairs));
 
     return Uq;
 }

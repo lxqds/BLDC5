@@ -113,7 +113,9 @@ int main(void)
   while (1)
   {
       {
+
           Get_Angle2();
+
           //move(10);
           //velocityOpenloop(10.f);
           /*Get_Angle2();

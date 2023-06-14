@@ -27,7 +27,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htimx)
             Delay1ms=0;
         }
 
-        velocityOpenloop(10.f);
+        angleOpenloop(1.5);
+        //velocityOpenloop(10.f);
         /*if(++interval_count % 1000 == 0)
         {
             printf("Angle: %.2f", Get_Angle2());
