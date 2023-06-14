@@ -88,4 +88,5 @@ void Motor_init(void);
 void Motor_initFOC(void);
 void loopFOC(void);
 void move(float new_target);
+void setPhaseVoltage2(float Uq, float Ud, float angle_el);
 #endif //BLDC5_FOC_H

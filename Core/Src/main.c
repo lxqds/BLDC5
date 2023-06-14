@@ -113,10 +113,16 @@ int main(void)
   while (1)
   {
       {
+          static float th=0;
+          th = th +0.002;
+          if(th==_2PI)
+              th = 0;
+          setPhaseVoltage2(2,0,th);
 
-          Get_Angle2();
+          //Get_Angle2();
 
-          //move(10);
+          /*move(50);
+          loopFOC();*/
           //velocityOpenloop(10.f);
           /*Get_Angle2();
           move(target);

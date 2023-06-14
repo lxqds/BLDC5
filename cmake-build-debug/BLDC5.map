@@ -9,7 +9,7 @@ c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/
 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_muldivdf3.o)
                               CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj (__aeabi_ddiv)
 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_cmpdf2.o)
-                              CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj (__aeabi_dcmplt)
+                              CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj (__aeabi_dcmpeq)
 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_fixdfsi.o)
                               CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj (__aeabi_d2iz)
 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_fixunsdfsi.o)
@@ -214,6 +214,8 @@ Discarded input sections
  .text          0x00000000        0x0 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
  .data          0x00000000        0x0 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
  .bss           0x00000000        0x0 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+ .text._electricalAngle
+                0x00000000       0x12 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
  .text._normallizeAngle
                 0x00000000       0x48 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
  .text.setPwm   0x00000000      0x138 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
@@ -224,6 +226,8 @@ Discarded input sections
                 0x00000000       0x12 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
  .text.velocityOpenloop
                 0x00000000       0xac CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+ .text.angleOpenloop
+                0x00000000      0x130 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
  .text.electricalAngle
                 0x00000000       0x3c CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
  .text.PID_velocity
@@ -246,6 +250,8 @@ Discarded input sections
  .bss.dc_b      0x00000000        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
  .bss.dc_c      0x00000000        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
  .bss.electrical_angle
+                0x00000000        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+ .bss.open_loop_timestamp
                 0x00000000        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
  .bss.shaft_angle_sp
                 0x00000000        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
@@ -1920,7 +1926,7 @@ LOAD c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-202
                 0x08000000                g_pfnVectors
                 0x080001d8                . = ALIGN (0x4)
 
-.text           0x08000200     0xc2bc
+.text           0x08000200     0xc1bc
                 0x08000200                . = ALIGN (0x4)
  *(.text)
  .text          0x08000200       0x40 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
@@ -2058,830 +2064,823 @@ LOAD c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-202
  .text.HAL_ADC_MspInit
                 0x08001b94       0x84 CMakeFiles/BLDC5.elf.dir/Core/Src/adc.c.obj
                 0x08001b94                HAL_ADC_MspInit
- .text._electricalAngle
-                0x08001c18       0x12 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x08001c18                _electricalAngle
- *fill*         0x08001c2a        0x6 
- .text._sin2    0x08001c30      0x1f0 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x08001c30                _sin2
+ .text._sin2    0x08001c18      0x1f0 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x08001c18                _sin2
  .text._normalizeAngle2
-                0x08001e20       0x48 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x08001e20                _normalizeAngle2
+                0x08001e08       0x48 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x08001e08                _normalizeAngle2
  .text._sqrtApprox2
-                0x08001e68       0x14 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x08001e68                _sqrtApprox2
- *fill*         0x08001e7c        0x4 
+                0x08001e50       0x14 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x08001e50                _sqrtApprox2
+ *fill*         0x08001e64        0x4 
  .text.setPhaseVoltage2
-                0x08001e80      0x318 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x08001e80                setPhaseVoltage2
- .text.angleOpenloop
-                0x08002198      0x130 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x08002198                angleOpenloop
+                0x08001e68      0x318 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x08001e68                setPhaseVoltage2
  .text.LPF_velocity
-                0x080022c8       0x54 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x080022c8                LPF_velocity
+                0x08002180       0x54 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x08002180                LPF_velocity
  .text.shaftAngle
-                0x0800231c       0x2c CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x0800231c                shaftAngle
+                0x080021d4       0x2c CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x080021d4                shaftAngle
  .text.shaftVelocity
-                0x08002348       0x24 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x08002348                shaftVelocity
+                0x08002200       0x24 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x08002200                shaftVelocity
  .text.alignSensor
-                0x0800236c       0x74 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x0800236c                alignSensor
+                0x08002224       0x74 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x08002224                alignSensor
  .text.PID_init
-                0x080023e0       0x80 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x080023e0                PID_init
+                0x08002298       0x80 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x08002298                PID_init
  .text.Motor_init
-                0x08002460       0x58 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x08002460                Motor_init
+                0x08002318       0x58 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x08002318                Motor_init
  .text.Motor_initFOC
-                0x080024b8       0x54 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x080024b8                Motor_initFOC
+                0x08002370       0x54 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x08002370                Motor_initFOC
  .text.foc_Init
-                0x0800250c       0x94 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x0800250c                foc_Init
+                0x080023c4       0x94 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x080023c4                foc_Init
  .text.MX_GPIO_Init
-                0x080025a0       0xa0 CMakeFiles/BLDC5.elf.dir/Core/Src/gpio.c.obj
-                0x080025a0                MX_GPIO_Init
+                0x08002458       0xa0 CMakeFiles/BLDC5.elf.dir/Core/Src/gpio.c.obj
+                0x08002458                MX_GPIO_Init
  .text.interrupt_Init
-                0x08002640       0x10 CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj
-                0x08002640                interrupt_Init
+                0x080024f8       0x10 CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj
+                0x080024f8                interrupt_Init
  .text.HAL_TIM_PeriodElapsedCallback
-                0x08002650       0x44 CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj
-                0x08002650                HAL_TIM_PeriodElapsedCallback
+                0x08002508       0x3c CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj
+                0x08002508                HAL_TIM_PeriodElapsedCallback
  .text.Error_Handler
-                0x08002694        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj
-                0x08002694                Error_Handler
+                0x08002544        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj
+                0x08002544                Error_Handler
  .text.SystemClock_Config
-                0x08002698       0x74 CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj
-                0x08002698                SystemClock_Config
- .text.main     0x0800270c       0x40 CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj
-                0x0800270c                main
+                0x08002548       0x74 CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj
+                0x08002548                SystemClock_Config
+ *fill*         0x080025bc        0x4 
+ .text.main     0x080025c0       0x90 CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj
+                0x080025c0                main
  .text.RetargetInit
-                0x0800274c       0x20 CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
-                0x0800274c                RetargetInit
- .text._isatty  0x0800276c       0x16 CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
-                0x0800276c                _isatty
- *fill*         0x08002782        0x2 
- .text._write   0x08002784       0x34 CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
-                0x08002784                _write
- .text._close   0x080027b8       0x18 CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
-                0x080027b8                _close
- .text._lseek   0x080027d0       0x10 CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
-                0x080027d0                _lseek
- .text._read    0x080027e0       0x30 CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
-                0x080027e0                _read
- .text._fstat   0x08002810       0x1a CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
-                0x08002810                _fstat
- *fill*         0x0800282a        0x2 
+                0x08002650       0x20 CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
+                0x08002650                RetargetInit
+ .text._isatty  0x08002670       0x16 CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
+                0x08002670                _isatty
+ *fill*         0x08002686        0x2 
+ .text._write   0x08002688       0x34 CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
+                0x08002688                _write
+ .text._close   0x080026bc       0x18 CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
+                0x080026bc                _close
+ .text._lseek   0x080026d4       0x10 CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
+                0x080026d4                _lseek
+ .text._read    0x080026e4       0x30 CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
+                0x080026e4                _read
+ .text._fstat   0x08002714       0x1a CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
+                0x08002714                _fstat
+ *fill*         0x0800272e        0x2 
  .text.HAL_MspInit
-                0x0800282c       0x38 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_hal_msp.c.obj
-                0x0800282c                HAL_MspInit
+                0x08002730       0x38 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_hal_msp.c.obj
+                0x08002730                HAL_MspInit
  .text.NMI_Handler
-                0x08002864        0x2 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
-                0x08002864                NMI_Handler
+                0x08002768        0x2 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
+                0x08002768                NMI_Handler
  .text.HardFault_Handler
-                0x08002866        0x2 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
-                0x08002866                HardFault_Handler
+                0x0800276a        0x2 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
+                0x0800276a                HardFault_Handler
  .text.MemManage_Handler
-                0x08002868        0x2 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
-                0x08002868                MemManage_Handler
+                0x0800276c        0x2 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
+                0x0800276c                MemManage_Handler
  .text.BusFault_Handler
-                0x0800286a        0x2 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800286a                BusFault_Handler
+                0x0800276e        0x2 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
+                0x0800276e                BusFault_Handler
  .text.UsageFault_Handler
-                0x0800286c        0x2 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800286c                UsageFault_Handler
+                0x08002770        0x2 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
+                0x08002770                UsageFault_Handler
  .text.SVC_Handler
-                0x0800286e        0x2 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800286e                SVC_Handler
+                0x08002772        0x2 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
+                0x08002772                SVC_Handler
  .text.DebugMon_Handler
-                0x08002870        0x2 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
-                0x08002870                DebugMon_Handler
+                0x08002774        0x2 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
+                0x08002774                DebugMon_Handler
  .text.PendSV_Handler
-                0x08002872        0x2 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
-                0x08002872                PendSV_Handler
+                0x08002776        0x2 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
+                0x08002776                PendSV_Handler
  .text.SysTick_Handler
-                0x08002874        0x8 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
-                0x08002874                SysTick_Handler
+                0x08002778        0x8 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
+                0x08002778                SysTick_Handler
  .text.TIM2_IRQHandler
-                0x0800287c       0x10 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800287c                TIM2_IRQHandler
+                0x08002780       0x10 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
+                0x08002780                TIM2_IRQHandler
  .text.TIM3_IRQHandler
-                0x0800288c       0x10 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800288c                TIM3_IRQHandler
- .text._getpid  0x0800289c        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/syscalls.c.obj
-                0x0800289c                _getpid
- .text._kill    0x080028a0       0x10 CMakeFiles/BLDC5.elf.dir/Core/Src/syscalls.c.obj
-                0x080028a0                _kill
- .text._exit    0x080028b0        0xc CMakeFiles/BLDC5.elf.dir/Core/Src/syscalls.c.obj
-                0x080028b0                _exit
- .text._sbrk    0x080028bc       0x48 CMakeFiles/BLDC5.elf.dir/Core/Src/sysmem.c.obj
-                0x080028bc                _sbrk
+                0x08002790       0x10 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
+                0x08002790                TIM3_IRQHandler
+ .text._getpid  0x080027a0        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/syscalls.c.obj
+                0x080027a0                _getpid
+ .text._kill    0x080027a4       0x10 CMakeFiles/BLDC5.elf.dir/Core/Src/syscalls.c.obj
+                0x080027a4                _kill
+ .text._exit    0x080027b4        0xc CMakeFiles/BLDC5.elf.dir/Core/Src/syscalls.c.obj
+                0x080027b4                _exit
+ .text._sbrk    0x080027c0       0x48 CMakeFiles/BLDC5.elf.dir/Core/Src/sysmem.c.obj
+                0x080027c0                _sbrk
  .text.SystemInit
-                0x08002904        0x2 CMakeFiles/BLDC5.elf.dir/Core/Src/system_stm32g4xx.c.obj
-                0x08002904                SystemInit
- *fill*         0x08002906        0x2 
+                0x08002808        0x2 CMakeFiles/BLDC5.elf.dir/Core/Src/system_stm32g4xx.c.obj
+                0x08002808                SystemInit
+ *fill*         0x0800280a        0x2 
  .text.MX_TIM2_Init
-                0x08002908       0x70 CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj
-                0x08002908                MX_TIM2_Init
+                0x0800280c       0x70 CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj
+                0x0800280c                MX_TIM2_Init
  .text.MX_TIM3_Init
-                0x08002978       0x70 CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj
-                0x08002978                MX_TIM3_Init
+                0x0800287c       0x70 CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj
+                0x0800287c                MX_TIM3_Init
  .text.HAL_TIM_Base_MspInit
-                0x080029e8       0x90 CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj
-                0x080029e8                HAL_TIM_Base_MspInit
+                0x080028ec       0x90 CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj
+                0x080028ec                HAL_TIM_Base_MspInit
  .text.HAL_TIM_MspPostInit
-                0x08002a78       0x54 CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj
-                0x08002a78                HAL_TIM_MspPostInit
+                0x0800297c       0x54 CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj
+                0x0800297c                HAL_TIM_MspPostInit
  .text.MX_TIM1_Init
-                0x08002acc      0x128 CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj
-                0x08002acc                MX_TIM1_Init
+                0x080029d0      0x128 CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj
+                0x080029d0                MX_TIM1_Init
  .text.MX_USART2_UART_Init
-                0x08002bf4       0x68 CMakeFiles/BLDC5.elf.dir/Core/Src/usart.c.obj
-                0x08002bf4                MX_USART2_UART_Init
+                0x08002af8       0x68 CMakeFiles/BLDC5.elf.dir/Core/Src/usart.c.obj
+                0x08002af8                MX_USART2_UART_Init
  .text.HAL_UART_MspInit
-                0x08002c5c       0xb4 CMakeFiles/BLDC5.elf.dir/Core/Src/usart.c.obj
-                0x08002c5c                HAL_UART_MspInit
+                0x08002b60       0xb4 CMakeFiles/BLDC5.elf.dir/Core/Src/usart.c.obj
+                0x08002b60                HAL_UART_MspInit
  .text.Reset_Handler
-                0x08002d10       0x50 CMakeFiles/BLDC5.elf.dir/Core/Startup/startup_stm32g431cbtx.s.obj
-                0x08002d10                Reset_Handler
+                0x08002c14       0x50 CMakeFiles/BLDC5.elf.dir/Core/Startup/startup_stm32g431cbtx.s.obj
+                0x08002c14                Reset_Handler
  .text.Default_Handler
-                0x08002d60        0x2 CMakeFiles/BLDC5.elf.dir/Core/Startup/startup_stm32g431cbtx.s.obj
-                0x08002d60                RTC_Alarm_IRQHandler
-                0x08002d60                EXTI2_IRQHandler
-                0x08002d60                TIM8_TRG_COM_IRQHandler
-                0x08002d60                TIM8_CC_IRQHandler
-                0x08002d60                TIM1_CC_IRQHandler
-                0x08002d60                USB_HP_IRQHandler
-                0x08002d60                CORDIC_IRQHandler
-                0x08002d60                EXTI3_IRQHandler
-                0x08002d60                I2C3_ER_IRQHandler
-                0x08002d60                EXTI0_IRQHandler
-                0x08002d60                I2C2_EV_IRQHandler
-                0x08002d60                FPU_IRQHandler
-                0x08002d60                FDCAN1_IT1_IRQHandler
-                0x08002d60                TIM1_UP_TIM16_IRQHandler
-                0x08002d60                ADC1_2_IRQHandler
-                0x08002d60                SPI1_IRQHandler
-                0x08002d60                TIM6_DAC_IRQHandler
-                0x08002d60                TIM8_UP_IRQHandler
-                0x08002d60                DMA2_Channel2_IRQHandler
-                0x08002d60                DMA1_Channel4_IRQHandler
-                0x08002d60                USART3_IRQHandler
-                0x08002d60                TIM4_IRQHandler
-                0x08002d60                DMA2_Channel1_IRQHandler
-                0x08002d60                I2C1_EV_IRQHandler
-                0x08002d60                DMA1_Channel6_IRQHandler
-                0x08002d60                UART4_IRQHandler
-                0x08002d60                DMA2_Channel4_IRQHandler
-                0x08002d60                RCC_IRQHandler
-                0x08002d60                DMA1_Channel1_IRQHandler
-                0x08002d60                Default_Handler
-                0x08002d60                RTC_TAMP_LSECSS_IRQHandler
-                0x08002d60                FMAC_IRQHandler
-                0x08002d60                EXTI15_10_IRQHandler
-                0x08002d60                TIM7_IRQHandler
-                0x08002d60                UCPD1_IRQHandler
-                0x08002d60                I2C3_EV_IRQHandler
-                0x08002d60                EXTI9_5_IRQHandler
-                0x08002d60                RTC_WKUP_IRQHandler
-                0x08002d60                PVD_PVM_IRQHandler
-                0x08002d60                SPI2_IRQHandler
-                0x08002d60                DMA2_Channel5_IRQHandler
-                0x08002d60                CRS_IRQHandler
-                0x08002d60                DMA1_Channel5_IRQHandler
-                0x08002d60                USB_LP_IRQHandler
-                0x08002d60                EXTI4_IRQHandler
-                0x08002d60                RNG_IRQHandler
-                0x08002d60                TIM1_TRG_COM_TIM17_IRQHandler
-                0x08002d60                DMA1_Channel3_IRQHandler
-                0x08002d60                WWDG_IRQHandler
-                0x08002d60                LPUART1_IRQHandler
-                0x08002d60                DMA2_Channel6_IRQHandler
-                0x08002d60                FDCAN1_IT0_IRQHandler
-                0x08002d60                COMP1_2_3_IRQHandler
-                0x08002d60                EXTI1_IRQHandler
-                0x08002d60                USART2_IRQHandler
-                0x08002d60                I2C2_ER_IRQHandler
-                0x08002d60                DMA1_Channel2_IRQHandler
-                0x08002d60                TIM8_BRK_IRQHandler
-                0x08002d60                FLASH_IRQHandler
-                0x08002d60                USART1_IRQHandler
-                0x08002d60                SPI3_IRQHandler
-                0x08002d60                I2C1_ER_IRQHandler
-                0x08002d60                LPTIM1_IRQHandler
-                0x08002d60                DMAMUX_OVR_IRQHandler
-                0x08002d60                USBWakeUp_IRQHandler
-                0x08002d60                SAI1_IRQHandler
-                0x08002d60                DMA2_Channel3_IRQHandler
-                0x08002d60                COMP4_IRQHandler
-                0x08002d60                TIM1_BRK_TIM15_IRQHandler
- *fill*         0x08002d62        0x2 
+                0x08002c64        0x2 CMakeFiles/BLDC5.elf.dir/Core/Startup/startup_stm32g431cbtx.s.obj
+                0x08002c64                RTC_Alarm_IRQHandler
+                0x08002c64                EXTI2_IRQHandler
+                0x08002c64                TIM8_TRG_COM_IRQHandler
+                0x08002c64                TIM8_CC_IRQHandler
+                0x08002c64                TIM1_CC_IRQHandler
+                0x08002c64                USB_HP_IRQHandler
+                0x08002c64                CORDIC_IRQHandler
+                0x08002c64                EXTI3_IRQHandler
+                0x08002c64                I2C3_ER_IRQHandler
+                0x08002c64                EXTI0_IRQHandler
+                0x08002c64                I2C2_EV_IRQHandler
+                0x08002c64                FPU_IRQHandler
+                0x08002c64                FDCAN1_IT1_IRQHandler
+                0x08002c64                TIM1_UP_TIM16_IRQHandler
+                0x08002c64                ADC1_2_IRQHandler
+                0x08002c64                SPI1_IRQHandler
+                0x08002c64                TIM6_DAC_IRQHandler
+                0x08002c64                TIM8_UP_IRQHandler
+                0x08002c64                DMA2_Channel2_IRQHandler
+                0x08002c64                DMA1_Channel4_IRQHandler
+                0x08002c64                USART3_IRQHandler
+                0x08002c64                TIM4_IRQHandler
+                0x08002c64                DMA2_Channel1_IRQHandler
+                0x08002c64                I2C1_EV_IRQHandler
+                0x08002c64                DMA1_Channel6_IRQHandler
+                0x08002c64                UART4_IRQHandler
+                0x08002c64                DMA2_Channel4_IRQHandler
+                0x08002c64                RCC_IRQHandler
+                0x08002c64                DMA1_Channel1_IRQHandler
+                0x08002c64                Default_Handler
+                0x08002c64                RTC_TAMP_LSECSS_IRQHandler
+                0x08002c64                FMAC_IRQHandler
+                0x08002c64                EXTI15_10_IRQHandler
+                0x08002c64                TIM7_IRQHandler
+                0x08002c64                UCPD1_IRQHandler
+                0x08002c64                I2C3_EV_IRQHandler
+                0x08002c64                EXTI9_5_IRQHandler
+                0x08002c64                RTC_WKUP_IRQHandler
+                0x08002c64                PVD_PVM_IRQHandler
+                0x08002c64                SPI2_IRQHandler
+                0x08002c64                DMA2_Channel5_IRQHandler
+                0x08002c64                CRS_IRQHandler
+                0x08002c64                DMA1_Channel5_IRQHandler
+                0x08002c64                USB_LP_IRQHandler
+                0x08002c64                EXTI4_IRQHandler
+                0x08002c64                RNG_IRQHandler
+                0x08002c64                TIM1_TRG_COM_TIM17_IRQHandler
+                0x08002c64                DMA1_Channel3_IRQHandler
+                0x08002c64                WWDG_IRQHandler
+                0x08002c64                LPUART1_IRQHandler
+                0x08002c64                DMA2_Channel6_IRQHandler
+                0x08002c64                FDCAN1_IT0_IRQHandler
+                0x08002c64                COMP1_2_3_IRQHandler
+                0x08002c64                EXTI1_IRQHandler
+                0x08002c64                USART2_IRQHandler
+                0x08002c64                I2C2_ER_IRQHandler
+                0x08002c64                DMA1_Channel2_IRQHandler
+                0x08002c64                TIM8_BRK_IRQHandler
+                0x08002c64                FLASH_IRQHandler
+                0x08002c64                USART1_IRQHandler
+                0x08002c64                SPI3_IRQHandler
+                0x08002c64                I2C1_ER_IRQHandler
+                0x08002c64                LPTIM1_IRQHandler
+                0x08002c64                DMAMUX_OVR_IRQHandler
+                0x08002c64                USBWakeUp_IRQHandler
+                0x08002c64                SAI1_IRQHandler
+                0x08002c64                DMA2_Channel3_IRQHandler
+                0x08002c64                COMP4_IRQHandler
+                0x08002c64                TIM1_BRK_TIM15_IRQHandler
+ *fill*         0x08002c66        0x2 
  .text.HAL_InitTick
-                0x08002d64       0x50 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
-                0x08002d64                HAL_InitTick
+                0x08002c68       0x50 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
+                0x08002c68                HAL_InitTick
  .text.HAL_Init
-                0x08002db4       0x1e CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
-                0x08002db4                HAL_Init
- *fill*         0x08002dd2        0x2 
+                0x08002cb8       0x1e CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
+                0x08002cb8                HAL_Init
+ *fill*         0x08002cd6        0x2 
  .text.HAL_IncTick
-                0x08002dd4       0x18 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
-                0x08002dd4                HAL_IncTick
+                0x08002cd8       0x18 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
+                0x08002cd8                HAL_IncTick
  .text.HAL_GetTick
-                0x08002dec        0xc CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
-                0x08002dec                HAL_GetTick
+                0x08002cf0        0xc CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
+                0x08002cf0                HAL_GetTick
  .text.HAL_Delay
-                0x08002df8       0x28 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
-                0x08002df8                HAL_Delay
+                0x08002cfc       0x28 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
+                0x08002cfc                HAL_Delay
  .text.HAL_ADC_Init
-                0x08002e20      0x240 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c.obj
-                0x08002e20                HAL_ADC_Init
+                0x08002d24      0x240 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c.obj
+                0x08002d24                HAL_ADC_Init
  .text.HAL_ADC_ConfigChannel
-                0x08003060      0x4e4 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c.obj
-                0x08003060                HAL_ADC_ConfigChannel
+                0x08002f64      0x4e4 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c.obj
+                0x08002f64                HAL_ADC_ConfigChannel
  .text.HAL_ADCEx_MultiModeConfigChannel
-                0x08003544      0x114 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.c.obj
-                0x08003544                HAL_ADCEx_MultiModeConfigChannel
+                0x08003448      0x114 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.c.obj
+                0x08003448                HAL_ADCEx_MultiModeConfigChannel
  .text.HAL_NVIC_SetPriorityGrouping
-                0x08003658       0x24 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c.obj
-                0x08003658                HAL_NVIC_SetPriorityGrouping
+                0x0800355c       0x24 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c.obj
+                0x0800355c                HAL_NVIC_SetPriorityGrouping
  .text.HAL_NVIC_SetPriority
-                0x0800367c       0x70 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c.obj
-                0x0800367c                HAL_NVIC_SetPriority
+                0x08003580       0x70 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c.obj
+                0x08003580                HAL_NVIC_SetPriority
  .text.HAL_NVIC_EnableIRQ
-                0x080036ec       0x1c CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c.obj
-                0x080036ec                HAL_NVIC_EnableIRQ
+                0x080035f0       0x1c CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c.obj
+                0x080035f0                HAL_NVIC_EnableIRQ
  .text.HAL_SYSTICK_Config
-                0x08003708       0x28 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c.obj
-                0x08003708                HAL_SYSTICK_Config
+                0x0800360c       0x28 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c.obj
+                0x0800360c                HAL_SYSTICK_Config
  .text.HAL_GPIO_Init
-                0x08003730      0x1dc CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c.obj
-                0x08003730                HAL_GPIO_Init
+                0x08003634      0x1dc CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c.obj
+                0x08003634                HAL_GPIO_Init
  .text.HAL_GPIO_ReadPin
-                0x0800390c        0xe CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c.obj
-                0x0800390c                HAL_GPIO_ReadPin
+                0x08003810        0xe CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c.obj
+                0x08003810                HAL_GPIO_ReadPin
  .text.HAL_GPIO_WritePin
-                0x0800391a        0xa CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c.obj
-                0x0800391a                HAL_GPIO_WritePin
+                0x0800381e        0xa CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c.obj
+                0x0800381e                HAL_GPIO_WritePin
  .text.HAL_GPIO_TogglePin
-                0x08003924       0x12 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c.obj
-                0x08003924                HAL_GPIO_TogglePin
- *fill*         0x08003936        0x2 
+                0x08003828       0x12 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c.obj
+                0x08003828                HAL_GPIO_TogglePin
+ *fill*         0x0800383a        0x2 
  .text.HAL_PWREx_ControlVoltageScaling
-                0x08003938      0x10c CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c.obj
-                0x08003938                HAL_PWREx_ControlVoltageScaling
+                0x0800383c      0x10c CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c.obj
+                0x0800383c                HAL_PWREx_ControlVoltageScaling
  .text.HAL_PWREx_DisableUCPDDeadBattery
-                0x08003a44       0x10 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c.obj
-                0x08003a44                HAL_PWREx_DisableUCPDDeadBattery
+                0x08003948       0x10 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c.obj
+                0x08003948                HAL_PWREx_DisableUCPDDeadBattery
  .text.RCC_GetSysClockFreqFromPLLSource
-                0x08003a54       0x54 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
+                0x08003958       0x54 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
  .text.HAL_RCC_OscConfig
-                0x08003aa8      0x4e8 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
-                0x08003aa8                HAL_RCC_OscConfig
+                0x080039ac      0x4e8 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
+                0x080039ac                HAL_RCC_OscConfig
  .text.HAL_RCC_GetSysClockFreq
-                0x08003f90       0x84 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
-                0x08003f90                HAL_RCC_GetSysClockFreq
+                0x08003e94       0x84 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
+                0x08003e94                HAL_RCC_GetSysClockFreq
  .text.HAL_RCC_ClockConfig
-                0x08004014      0x1f8 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
-                0x08004014                HAL_RCC_ClockConfig
+                0x08003f18      0x1f8 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
+                0x08003f18                HAL_RCC_ClockConfig
  .text.HAL_RCC_GetHCLKFreq
-                0x0800420c        0xc CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
-                0x0800420c                HAL_RCC_GetHCLKFreq
+                0x08004110        0xc CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
+                0x08004110                HAL_RCC_GetHCLKFreq
  .text.HAL_RCC_GetPCLK1Freq
-                0x08004218       0x24 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
-                0x08004218                HAL_RCC_GetPCLK1Freq
+                0x0800411c       0x24 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
+                0x0800411c                HAL_RCC_GetPCLK1Freq
  .text.HAL_RCC_GetPCLK2Freq
-                0x0800423c       0x24 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
-                0x0800423c                HAL_RCC_GetPCLK2Freq
+                0x08004140       0x24 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
+                0x08004140                HAL_RCC_GetPCLK2Freq
  .text.HAL_RCCEx_PeriphCLKConfig
-                0x08004260      0x2e4 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.c.obj
-                0x08004260                HAL_RCCEx_PeriphCLKConfig
+                0x08004164      0x2e4 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.c.obj
+                0x08004164                HAL_RCCEx_PeriphCLKConfig
  .text.TIM_OC1_SetConfig
-                0x08004544       0xa0 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+                0x08004448       0xa0 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
  .text.TIM_OC3_SetConfig
-                0x080045e4       0x8c CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+                0x080044e8       0x8c CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
  .text.TIM_OC4_SetConfig
-                0x08004670       0x8c CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+                0x08004574       0x8c CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
  .text.TIM_OC5_SetConfig
-                0x080046fc       0x68 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+                0x08004600       0x68 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
  .text.TIM_OC6_SetConfig
-                0x08004764       0x6c CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+                0x08004668       0x6c CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
  .text.TIM_TI1_ConfigInputStage
-                0x080047d0       0x24 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+                0x080046d4       0x24 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
  .text.TIM_TI2_ConfigInputStage
-                0x080047f4       0x26 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+                0x080046f8       0x26 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
  .text.TIM_ITRx_SetConfig
-                0x0800481a       0x14 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
- *fill*         0x0800482e        0x2 
+                0x0800471e       0x14 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+ *fill*         0x08004732        0x2 
  .text.HAL_TIM_Base_Start_IT
-                0x08004830       0x84 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
-                0x08004830                HAL_TIM_Base_Start_IT
+                0x08004734       0x84 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+                0x08004734                HAL_TIM_Base_Start_IT
  .text.HAL_TIM_PWM_MspInit
-                0x080048b4        0x2 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
-                0x080048b4                HAL_TIM_PWM_MspInit
+                0x080047b8        0x2 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+                0x080047b8                HAL_TIM_PWM_MspInit
  .text.HAL_TIM_OC_DelayElapsedCallback
-                0x080048b6        0x2 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
-                0x080048b6                HAL_TIM_OC_DelayElapsedCallback
+                0x080047ba        0x2 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+                0x080047ba                HAL_TIM_OC_DelayElapsedCallback
  .text.HAL_TIM_IC_CaptureCallback
-                0x080048b8        0x2 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
-                0x080048b8                HAL_TIM_IC_CaptureCallback
+                0x080047bc        0x2 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+                0x080047bc                HAL_TIM_IC_CaptureCallback
  .text.HAL_TIM_PWM_PulseFinishedCallback
-                0x080048ba        0x2 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
-                0x080048ba                HAL_TIM_PWM_PulseFinishedCallback
+                0x080047be        0x2 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+                0x080047be                HAL_TIM_PWM_PulseFinishedCallback
  .text.HAL_TIM_TriggerCallback
-                0x080048bc        0x2 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
-                0x080048bc                HAL_TIM_TriggerCallback
+                0x080047c0        0x2 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+                0x080047c0                HAL_TIM_TriggerCallback
  .text.HAL_TIM_IRQHandler
-                0x080048be      0x21e CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
-                0x080048be                HAL_TIM_IRQHandler
+                0x080047c2      0x21e CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+                0x080047c2                HAL_TIM_IRQHandler
  .text.TIM_Base_SetConfig
-                0x08004adc       0xb8 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
-                0x08004adc                TIM_Base_SetConfig
+                0x080049e0       0xb8 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+                0x080049e0                TIM_Base_SetConfig
  .text.HAL_TIM_Base_Init
-                0x08004b94       0x60 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
-                0x08004b94                HAL_TIM_Base_Init
+                0x08004a98       0x60 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+                0x08004a98                HAL_TIM_Base_Init
  .text.HAL_TIM_PWM_Init
-                0x08004bf4       0x60 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
-                0x08004bf4                HAL_TIM_PWM_Init
+                0x08004af8       0x60 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+                0x08004af8                HAL_TIM_PWM_Init
  .text.TIM_OC2_SetConfig
-                0x08004c54       0x8c CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
-                0x08004c54                TIM_OC2_SetConfig
+                0x08004b58       0x8c CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+                0x08004b58                TIM_OC2_SetConfig
  .text.HAL_TIM_PWM_ConfigChannel
-                0x08004ce0      0x13a CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
-                0x08004ce0                HAL_TIM_PWM_ConfigChannel
+                0x08004be4      0x13a CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+                0x08004be4                HAL_TIM_PWM_ConfigChannel
  .text.TIM_ETR_SetConfig
-                0x08004e1a       0x18 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
-                0x08004e1a                TIM_ETR_SetConfig
- *fill*         0x08004e32        0x2 
+                0x08004d1e       0x18 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+                0x08004d1e                TIM_ETR_SetConfig
+ *fill*         0x08004d36        0x2 
  .text.HAL_TIM_ConfigClockSource
-                0x08004e34      0x138 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
-                0x08004e34                HAL_TIM_ConfigClockSource
+                0x08004d38      0x138 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+                0x08004d38                HAL_TIM_ConfigClockSource
  .text.TIM_CCxChannelCmd
-                0x08004f6c       0x1e CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
-                0x08004f6c                TIM_CCxChannelCmd
- *fill*         0x08004f8a        0x2 
+                0x08004e70       0x1e CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+                0x08004e70                TIM_CCxChannelCmd
+ *fill*         0x08004e8e        0x2 
  .text.HAL_TIM_PWM_Start
-                0x08004f8c      0x158 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
-                0x08004f8c                HAL_TIM_PWM_Start
+                0x08004e90      0x158 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+                0x08004e90                HAL_TIM_PWM_Start
  .text.HAL_TIMEx_MasterConfigSynchronization
-                0x080050e4       0x94 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
-                0x080050e4                HAL_TIMEx_MasterConfigSynchronization
+                0x08004fe8       0x94 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
+                0x08004fe8                HAL_TIMEx_MasterConfigSynchronization
  .text.HAL_TIMEx_ConfigBreakDeadTime
-                0x08005178       0xbc CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
-                0x08005178                HAL_TIMEx_ConfigBreakDeadTime
+                0x0800507c       0xbc CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
+                0x0800507c                HAL_TIMEx_ConfigBreakDeadTime
  .text.HAL_TIMEx_CommutCallback
-                0x08005234        0x2 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
-                0x08005234                HAL_TIMEx_CommutCallback
+                0x08005138        0x2 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
+                0x08005138                HAL_TIMEx_CommutCallback
  .text.HAL_TIMEx_BreakCallback
-                0x08005236        0x2 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
-                0x08005236                HAL_TIMEx_BreakCallback
+                0x0800513a        0x2 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
+                0x0800513a                HAL_TIMEx_BreakCallback
  .text.HAL_TIMEx_Break2Callback
-                0x08005238        0x2 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
-                0x08005238                HAL_TIMEx_Break2Callback
+                0x0800513c        0x2 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
+                0x0800513c                HAL_TIMEx_Break2Callback
  .text.HAL_TIMEx_EncoderIndexCallback
-                0x0800523a        0x2 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
-                0x0800523a                HAL_TIMEx_EncoderIndexCallback
+                0x0800513e        0x2 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
+                0x0800513e                HAL_TIMEx_EncoderIndexCallback
  .text.HAL_TIMEx_DirectionChangeCallback
-                0x0800523c        0x2 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
-                0x0800523c                HAL_TIMEx_DirectionChangeCallback
+                0x08005140        0x2 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
+                0x08005140                HAL_TIMEx_DirectionChangeCallback
  .text.HAL_TIMEx_IndexErrorCallback
-                0x0800523e        0x2 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
-                0x0800523e                HAL_TIMEx_IndexErrorCallback
+                0x08005142        0x2 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
+                0x08005142                HAL_TIMEx_IndexErrorCallback
  .text.HAL_TIMEx_TransitionErrorCallback
-                0x08005240        0x2 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
-                0x08005240                HAL_TIMEx_TransitionErrorCallback
- *fill*         0x08005242        0x2 
+                0x08005144        0x2 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
+                0x08005144                HAL_TIMEx_TransitionErrorCallback
+ *fill*         0x08005146        0x2 
  .text.UART_SetConfig
-                0x08005244      0x344 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
-                0x08005244                UART_SetConfig
+                0x08005148      0x344 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+                0x08005148                UART_SetConfig
  .text.UART_AdvFeatureConfig
-                0x08005588       0xca CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
-                0x08005588                UART_AdvFeatureConfig
+                0x0800548c       0xca CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+                0x0800548c                UART_AdvFeatureConfig
  .text.UART_WaitOnFlagUntilTimeout
-                0x08005652       0xdc CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
-                0x08005652                UART_WaitOnFlagUntilTimeout
+                0x08005556       0xdc CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+                0x08005556                UART_WaitOnFlagUntilTimeout
  .text.HAL_UART_Transmit
-                0x0800572e       0xde CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
-                0x0800572e                HAL_UART_Transmit
+                0x08005632       0xde CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+                0x08005632                HAL_UART_Transmit
  .text.HAL_UART_Receive
-                0x0800580c      0x12c CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
-                0x0800580c                HAL_UART_Receive
+                0x08005710      0x12c CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+                0x08005710                HAL_UART_Receive
  .text.UART_CheckIdleState
-                0x08005938       0x74 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
-                0x08005938                UART_CheckIdleState
+                0x0800583c       0x74 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+                0x0800583c                UART_CheckIdleState
  .text.HAL_UART_Init
-                0x080059ac       0x66 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
-                0x080059ac                HAL_UART_Init
- *fill*         0x08005a12        0x2 
+                0x080058b0       0x66 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+                0x080058b0                HAL_UART_Init
+ *fill*         0x08005916        0x2 
  .text.UARTEx_SetNbDataToProcess
-                0x08005a14       0x4c CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
+                0x08005918       0x4c CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
  .text.HAL_UARTEx_DisableFifoMode
-                0x08005a60       0x3e CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
-                0x08005a60                HAL_UARTEx_DisableFifoMode
+                0x08005964       0x3e CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
+                0x08005964                HAL_UARTEx_DisableFifoMode
  .text.HAL_UARTEx_SetTxFifoThreshold
-                0x08005a9e       0x4a CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
-                0x08005a9e                HAL_UARTEx_SetTxFifoThreshold
+                0x080059a2       0x4a CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
+                0x080059a2                HAL_UARTEx_SetTxFifoThreshold
  .text.HAL_UARTEx_SetRxFifoThreshold
-                0x08005ae8       0x4a CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
-                0x08005ae8                HAL_UARTEx_SetRxFifoThreshold
- *fill*         0x08005b32        0x2 
- .text.__errno  0x08005b34        0xc c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-errno.o)
-                0x08005b34                __errno
+                0x080059ec       0x4a CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
+                0x080059ec                HAL_UARTEx_SetRxFifoThreshold
+ *fill*         0x08005a36        0x2 
+ .text.__errno  0x08005a38        0xc c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-errno.o)
+                0x08005a38                __errno
  .text.__libc_init_array
-                0x08005b40       0x48 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-init.o)
-                0x08005b40                __libc_init_array
- .text.memset   0x08005b88       0xa4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-memset.o)
-                0x08005b88                memset
- .text.printf   0x08005c2c       0x28 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-printf.o)
-                0x08005c2c                printf
- .text._puts_r  0x08005c54       0x9c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-puts.o)
-                0x08005c54                _puts_r
- .text.puts     0x08005cf0       0x10 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-puts.o)
-                0x08005cf0                puts
- .text.setvbuf  0x08005d00      0x1b0 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-setvbuf.o)
-                0x08005d00                setvbuf
+                0x08005a44       0x48 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-init.o)
+                0x08005a44                __libc_init_array
+ .text.memset   0x08005a8c       0xa4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-memset.o)
+                0x08005a8c                memset
+ .text.printf   0x08005b30       0x28 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-printf.o)
+                0x08005b30                printf
+ .text._puts_r  0x08005b58       0x9c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-puts.o)
+                0x08005b58                _puts_r
+ .text.puts     0x08005bf4       0x10 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-puts.o)
+                0x08005bf4                puts
+ .text.setvbuf  0x08005c04      0x1b0 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-setvbuf.o)
+                0x08005c04                setvbuf
  .text._vfprintf_r
-                0x08005eb0     0x1ad4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-vfprintf.o)
-                0x08005eb0                _vfprintf_r
+                0x08005db4     0x1ad4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-vfprintf.o)
+                0x08005db4                _vfprintf_r
  .text.__sbprintf
-                0x08007984       0x80 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-vfprintf.o)
+                0x08007888       0x80 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-vfprintf.o)
  .text.__swsetup_r
-                0x08007a04       0xd4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-wsetup.o)
-                0x08007a04                __swsetup_r
+                0x08007908       0xd4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-wsetup.o)
+                0x08007908                __swsetup_r
  .text.startup.register_fini
-                0x08007ad8       0x14 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-__call_atexit.o)
- .text.atexit   0x08007aec        0xc c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-atexit.o)
-                0x08007aec                atexit
- .text.quorem   0x08007af8      0x124 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-dtoa.o)
- *fill*         0x08007c1c        0x4 
- .text._dtoa_r  0x08007c20      0xec4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-dtoa.o)
-                0x08007c20                _dtoa_r
+                0x080079dc       0x14 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-__call_atexit.o)
+ .text.atexit   0x080079f0        0xc c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-atexit.o)
+                0x080079f0                atexit
+ .text.quorem   0x080079fc      0x124 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-dtoa.o)
+ .text._dtoa_r  0x08007b20      0xec4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-dtoa.o)
+                0x08007b20                _dtoa_r
  .text.__sflush_r
-                0x08008ae4      0x120 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-fflush.o)
-                0x08008ae4                __sflush_r
+                0x080089e4      0x120 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-fflush.o)
+                0x080089e4                __sflush_r
  .text._fflush_r
-                0x08008c04       0x5c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-fflush.o)
-                0x08008c04                _fflush_r
+                0x08008b04       0x5c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-fflush.o)
+                0x08008b04                _fflush_r
  .text._cleanup_r
-                0x08008c60        0xc c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-findfp.o)
-                0x08008c60                _cleanup_r
- .text.__sinit  0x08008c6c      0x10c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-findfp.o)
-                0x08008c6c                __sinit
+                0x08008b60        0xc c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-findfp.o)
+                0x08008b60                _cleanup_r
+ .text.__sinit  0x08008b6c      0x10c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-findfp.o)
+                0x08008b6c                __sinit
  .text.__sfp_lock_acquire
-                0x08008d78        0xc c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-findfp.o)
-                0x08008d78                __sfp_lock_acquire
+                0x08008c78        0xc c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-findfp.o)
+                0x08008c78                __sfp_lock_acquire
  .text.__sfp_lock_release
-                0x08008d84        0xc c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-findfp.o)
-                0x08008d84                __sfp_lock_release
+                0x08008c84        0xc c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-findfp.o)
+                0x08008c84                __sfp_lock_release
  .text.__libc_fini_array
-                0x08008d90       0x2c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-fini.o)
-                0x08008d90                __libc_fini_array
+                0x08008c90       0x2c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-fini.o)
+                0x08008c90                __libc_fini_array
  .text._malloc_trim_r
-                0x08008dbc       0xa0 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-freer.o)
-                0x08008dbc                _malloc_trim_r
- .text._free_r  0x08008e5c      0x20c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-freer.o)
-                0x08008e5c                _free_r
+                0x08008cbc       0xa0 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-freer.o)
+                0x08008cbc                _malloc_trim_r
+ .text._free_r  0x08008d5c      0x20c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-freer.o)
+                0x08008d5c                _free_r
  .text.__sfvwrite_r
-                0x08009068      0x2e8 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-fvwrite.o)
-                0x08009068                __sfvwrite_r
+                0x08008f68      0x2e8 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-fvwrite.o)
+                0x08008f68                __sfvwrite_r
  .text._fwalk_reent
-                0x08009350       0x48 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-fwalk.o)
-                0x08009350                _fwalk_reent
+                0x08009250       0x48 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-fwalk.o)
+                0x08009250                _fwalk_reent
  .text._localeconv_r
-                0x08009398        0x8 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-localeconv.o)
-                0x08009398                _localeconv_r
+                0x08009298        0x8 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-localeconv.o)
+                0x08009298                _localeconv_r
  .text.__retarget_lock_init_recursive
-                0x080093a0        0x4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-lock.o)
-                0x080093a0                __retarget_lock_init_recursive
+                0x080092a0        0x4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-lock.o)
+                0x080092a0                __retarget_lock_init_recursive
  .text.__retarget_lock_close_recursive
-                0x080093a4        0x4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-lock.o)
-                0x080093a4                __retarget_lock_close_recursive
+                0x080092a4        0x4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-lock.o)
+                0x080092a4                __retarget_lock_close_recursive
  .text.__retarget_lock_acquire_recursive
-                0x080093a8        0x4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-lock.o)
-                0x080093a8                __retarget_lock_acquire_recursive
+                0x080092a8        0x4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-lock.o)
+                0x080092a8                __retarget_lock_acquire_recursive
  .text.__retarget_lock_release_recursive
-                0x080093ac        0x4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-lock.o)
-                0x080093ac                __retarget_lock_release_recursive
+                0x080092ac        0x4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-lock.o)
+                0x080092ac                __retarget_lock_release_recursive
  .text.__smakebuf_r
-                0x080093b0       0xe0 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-makebuf.o)
-                0x080093b0                __smakebuf_r
+                0x080092b0       0xe0 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-makebuf.o)
+                0x080092b0                __smakebuf_r
  .text.__swhatbuf_r
-                0x08009490       0x60 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-makebuf.o)
-                0x08009490                __swhatbuf_r
- .text.malloc   0x080094f0       0x10 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-malloc.o)
-                0x080094f0                malloc
+                0x08009390       0x60 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-makebuf.o)
+                0x08009390                __swhatbuf_r
+ .text.malloc   0x080093f0       0x10 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-malloc.o)
+                0x080093f0                malloc
  .text._malloc_r
-                0x08009500      0x560 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mallocr.o)
-                0x08009500                _malloc_r
- .text.memmove  0x08009a60       0xf8 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-memmove.o)
-                0x08009a60                memmove
+                0x08009400      0x560 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mallocr.o)
+                0x08009400                _malloc_r
+ .text.memmove  0x08009960       0xf8 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-memmove.o)
+                0x08009960                memmove
  .text.__malloc_lock
-                0x08009b58        0xc c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mlock.o)
-                0x08009b58                __malloc_lock
+                0x08009a58        0xc c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mlock.o)
+                0x08009a58                __malloc_lock
  .text.__malloc_unlock
-                0x08009b64        0xc c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mlock.o)
-                0x08009b64                __malloc_unlock
- .text._Balloc  0x08009b70       0x4c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
-                0x08009b70                _Balloc
- .text._Bfree   0x08009bbc       0x14 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
-                0x08009bbc                _Bfree
+                0x08009a64        0xc c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mlock.o)
+                0x08009a64                __malloc_unlock
+ .text._Balloc  0x08009a70       0x4c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
+                0x08009a70                _Balloc
+ .text._Bfree   0x08009abc       0x14 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
+                0x08009abc                _Bfree
  .text.__multadd
-                0x08009bd0       0xa0 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
-                0x08009bd0                __multadd
+                0x08009ad0       0xa0 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
+                0x08009ad0                __multadd
  .text.__hi0bits
-                0x08009c70       0x40 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
-                0x08009c70                __hi0bits
+                0x08009b70       0x40 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
+                0x08009b70                __hi0bits
  .text.__lo0bits
-                0x08009cb0       0x5c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
-                0x08009cb0                __lo0bits
- .text.__i2b    0x08009d0c       0x5c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
-                0x08009d0c                __i2b
+                0x08009bb0       0x5c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
+                0x08009bb0                __lo0bits
+ .text.__i2b    0x08009c0c       0x5c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
+                0x08009c0c                __i2b
  .text.__multiply
-                0x08009d68      0x15c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
-                0x08009d68                __multiply
+                0x08009c68      0x15c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
+                0x08009c68                __multiply
  .text.__pow5mult
-                0x08009ec4       0xc0 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
-                0x08009ec4                __pow5mult
+                0x08009dc4       0xc0 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
+                0x08009dc4                __pow5mult
  .text.__lshift
-                0x08009f84       0xf0 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
-                0x08009f84                __lshift
- .text.__mcmp   0x0800a074       0x40 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
-                0x0800a074                __mcmp
- .text.__mdiff  0x0800a0b4      0x14c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
-                0x0800a0b4                __mdiff
- .text.__d2b    0x0800a200       0xc4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
-                0x0800a200                __d2b
+                0x08009e84       0xf0 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
+                0x08009e84                __lshift
+ .text.__mcmp   0x08009f74       0x40 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
+                0x08009f74                __mcmp
+ .text.__mdiff  0x08009fb4      0x14c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
+                0x08009fb4                __mdiff
+ .text.__d2b    0x0800a100       0xc4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
+                0x0800a100                __d2b
  .text._realloc_r
-                0x0800a2c4      0x3d8 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-reallocr.o)
-                0x0800a2c4                _realloc_r
- .text.frexp    0x0800a69c       0x70 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-s_frexp.o)
-                0x0800a69c                frexp
- .text._sbrk_r  0x0800a70c       0x24 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-sbrkr.o)
-                0x0800a70c                _sbrk_r
- .text.__sread  0x0800a730       0x24 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-stdio.o)
-                0x0800a730                __sread
+                0x0800a1c4      0x3d8 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-reallocr.o)
+                0x0800a1c4                _realloc_r
+ .text.frexp    0x0800a59c       0x70 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-s_frexp.o)
+                0x0800a59c                frexp
+ .text._sbrk_r  0x0800a60c       0x24 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-sbrkr.o)
+                0x0800a60c                _sbrk_r
+ .text.__sread  0x0800a630       0x24 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-stdio.o)
+                0x0800a630                __sread
  .text.__swrite
-                0x0800a754       0x40 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-stdio.o)
-                0x0800a754                __swrite
- .text.__sseek  0x0800a794       0x20 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-stdio.o)
-                0x0800a794                __sseek
+                0x0800a654       0x40 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-stdio.o)
+                0x0800a654                __swrite
+ .text.__sseek  0x0800a694       0x20 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-stdio.o)
+                0x0800a694                __sseek
  .text.__sclose
-                0x0800a7b4        0x8 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-stdio.o)
-                0x0800a7b4                __sclose
- .text.strncpy  0x0800a7bc       0x64 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-strncpy.o)
-                0x0800a7bc                strncpy
+                0x0800a6b4        0x8 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-stdio.o)
+                0x0800a6b4                __sclose
+ .text.strncpy  0x0800a6bc       0x64 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-strncpy.o)
+                0x0800a6bc                strncpy
  .text.__sprint_r.part.0
-                0x0800a820       0x78 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-vfiprintf.o)
+                0x0800a720       0x78 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-vfiprintf.o)
  .text.__sprint_r
-                0x0800a898       0x14 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-vfiprintf.o)
-                0x0800a898                __sprint_r
+                0x0800a798       0x14 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-vfiprintf.o)
+                0x0800a798                __sprint_r
  .text._vfiprintf_r
-                0x0800a8ac      0xda0 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-vfiprintf.o)
-                0x0800a8ac                _vfiprintf_r
+                0x0800a7ac      0xda0 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-vfiprintf.o)
+                0x0800a7ac                _vfiprintf_r
  .text.__sbprintf
-                0x0800b64c       0x80 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-vfiprintf.o)
+                0x0800b54c       0x80 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-vfiprintf.o)
  .text._write_r
-                0x0800b6cc       0x2c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-writer.o)
-                0x0800b6cc                _write_r
+                0x0800b5cc       0x2c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-writer.o)
+                0x0800b5cc                _write_r
  .text.__register_exitproc
-                0x0800b6f8       0x8c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-__atexit.o)
-                0x0800b6f8                __register_exitproc
+                0x0800b5f8       0x8c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-__atexit.o)
+                0x0800b5f8                __register_exitproc
  .text.__assert_func
-                0x0800b784       0x40 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-assert.o)
-                0x0800b784                __assert_func
+                0x0800b684       0x40 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-assert.o)
+                0x0800b684                __assert_func
  .text._calloc_r
-                0x0800b7c4       0x78 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-callocr.o)
-                0x0800b7c4                _calloc_r
+                0x0800b6c4       0x78 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-callocr.o)
+                0x0800b6c4                _calloc_r
  .text._close_r
-                0x0800b83c       0x24 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-closer.o)
-                0x0800b83c                _close_r
+                0x0800b73c       0x24 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-closer.o)
+                0x0800b73c                _close_r
  .text._fclose_r
-                0x0800b860       0xcc c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-fclose.o)
-                0x0800b860                _fclose_r
+                0x0800b760       0xcc c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-fclose.o)
+                0x0800b760                _fclose_r
  .text.fiprintf
-                0x0800b92c       0x28 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-fiprintf.o)
-                0x0800b92c                fiprintf
+                0x0800b82c       0x28 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-fiprintf.o)
+                0x0800b82c                fiprintf
  .text.__fputwc
-                0x0800b954       0xa8 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-fputwc.o)
-                0x0800b954                __fputwc
+                0x0800b854       0xa8 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-fputwc.o)
+                0x0800b854                __fputwc
  .text._fputwc_r
-                0x0800b9fc       0x68 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-fputwc.o)
-                0x0800b9fc                _fputwc_r
+                0x0800b8fc       0x68 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-fputwc.o)
+                0x0800b8fc                _fputwc_r
  .text._fstat_r
-                0x0800ba64       0x2c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-fstatr.o)
-                0x0800ba64                _fstat_r
+                0x0800b964       0x2c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-fstatr.o)
+                0x0800b964                _fstat_r
  .text._isatty_r
-                0x0800ba90       0x24 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-isattyr.o)
-                0x0800ba90                _isatty_r
+                0x0800b990       0x24 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-isattyr.o)
+                0x0800b990                _isatty_r
  .text.__locale_mb_cur_max
-                0x0800bab4        0xc c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-locale.o)
-                0x0800bab4                __locale_mb_cur_max
+                0x0800b9b4        0xc c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-locale.o)
+                0x0800b9b4                __locale_mb_cur_max
  .text._lseek_r
-                0x0800bac0       0x2c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-lseekr.o)
-                0x0800bac0                _lseek_r
+                0x0800b9c0       0x2c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-lseekr.o)
+                0x0800b9c0                _lseek_r
  .text.__ascii_mbtowc
-                0x0800baec       0x2c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mbtowc_r.o)
-                0x0800baec                __ascii_mbtowc
- .text._read_r  0x0800bb18       0x2c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-readr.o)
-                0x0800bb18                _read_r
+                0x0800b9ec       0x2c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mbtowc_r.o)
+                0x0800b9ec                __ascii_mbtowc
+ .text._read_r  0x0800ba18       0x2c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-readr.o)
+                0x0800ba18                _read_r
  .text.__swbuf_r
-                0x0800bb44       0xb0 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-wbuf.o)
-                0x0800bb44                __swbuf_r
+                0x0800ba44       0xb0 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-wbuf.o)
+                0x0800ba44                __swbuf_r
  .text._wcrtomb_r
-                0x0800bbf4       0x3c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-wcrtomb.o)
-                0x0800bbf4                _wcrtomb_r
+                0x0800baf4       0x3c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-wcrtomb.o)
+                0x0800baf4                _wcrtomb_r
  .text.__ascii_wctomb
-                0x0800bc30       0x1c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-wctomb_r.o)
-                0x0800bc30                __ascii_wctomb
- .text.abort    0x0800bc4c       0x10 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-abort.o)
-                0x0800bc4c                abort
- .text.raise    0x0800bc5c       0x5c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-signal.o)
-                0x0800bc5c                raise
- .text._kill_r  0x0800bcb8       0x2c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-signalr.o)
-                0x0800bcb8                _kill_r
+                0x0800bb30       0x1c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-wctomb_r.o)
+                0x0800bb30                __ascii_wctomb
+ .text.abort    0x0800bb4c       0x10 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-abort.o)
+                0x0800bb4c                abort
+ .text.raise    0x0800bb5c       0x5c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-signal.o)
+                0x0800bb5c                raise
+ .text._kill_r  0x0800bbb8       0x2c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-signalr.o)
+                0x0800bbb8                _kill_r
  .text._getpid_r
-                0x0800bce4        0x4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-signalr.o)
-                0x0800bce4                _getpid_r
- .text.atan2    0x0800bce8        0x4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a(lib_a-w_atan2.o)
-                0x0800bce8                atan2
- .text.fmod     0x0800bcec       0x58 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a(lib_a-w_fmod.o)
-                0x0800bcec                fmod
- *fill*         0x0800bd44        0x4 
+                0x0800bbe4        0x4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-signalr.o)
+                0x0800bbe4                _getpid_r
+ .text.atan2    0x0800bbe8        0x4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a(lib_a-w_atan2.o)
+                0x0800bbe8                atan2
+ .text.fmod     0x0800bbec       0x58 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a(lib_a-w_fmod.o)
+                0x0800bbec                fmod
+ *fill*         0x0800bc44        0x4 
  .text.__ieee754_atan2
-                0x0800bd48      0x194 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a(lib_a-e_atan2.o)
-                0x0800bd48                __ieee754_atan2
+                0x0800bc48      0x194 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a(lib_a-e_atan2.o)
+                0x0800bc48                __ieee754_atan2
  .text.__ieee754_fmod
-                0x0800bedc      0x294 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a(lib_a-e_fmod.o)
-                0x0800bedc                __ieee754_fmod
- .text.atan     0x0800c170      0x32c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a(lib_a-s_atan.o)
-                0x0800c170                atan
- .text.fabs     0x0800c49c        0x8 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a(lib_a-s_fabs.o)
-                0x0800c49c                fabs
+                0x0800bddc      0x294 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a(lib_a-e_fmod.o)
+                0x0800bddc                __ieee754_fmod
+ .text.atan     0x0800c070      0x32c c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a(lib_a-s_atan.o)
+                0x0800c070                atan
+ .text.fabs     0x0800c39c        0x8 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a(lib_a-s_fabs.o)
+                0x0800c39c                fabs
  *(.glue_7)
- .glue_7        0x0800c4a4        0x0 linker stubs
+ .glue_7        0x0800c3a4        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x0800c4a4        0x0 linker stubs
+ .glue_7t       0x0800c3a4        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x0800c4a4        0x0 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
+ .eh_frame      0x0800c3a4        0x0 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
  *(.init)
- .init          0x0800c4a4        0x4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crti.o
-                0x0800c4a4                _init
- .init          0x0800c4a8        0x8 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtn.o
+ .init          0x0800c3a4        0x4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crti.o
+                0x0800c3a4                _init
+ .init          0x0800c3a8        0x8 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtn.o
  *(.fini)
- .fini          0x0800c4b0        0x4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crti.o
-                0x0800c4b0                _fini
- .fini          0x0800c4b4        0x8 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtn.o
-                0x0800c4bc                . = ALIGN (0x4)
-                0x0800c4bc                _etext = .
+ .fini          0x0800c3b0        0x4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crti.o
+                0x0800c3b0                _fini
+ .fini          0x0800c3b4        0x8 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtn.o
+                0x0800c3bc                . = ALIGN (0x4)
+                0x0800c3bc                _etext = .
 
-.vfp11_veneer   0x0800c4bc        0x0
- .vfp11_veneer  0x0800c4bc        0x0 linker stubs
+.vfp11_veneer   0x0800c3bc        0x0
+ .vfp11_veneer  0x0800c3bc        0x0 linker stubs
 
-.v4_bx          0x0800c4bc        0x0
- .v4_bx         0x0800c4bc        0x0 linker stubs
+.v4_bx          0x0800c3bc        0x0
+ .v4_bx         0x0800c3bc        0x0 linker stubs
 
-.iplt           0x0800c4bc        0x0
- .iplt          0x0800c4bc        0x0 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
+.iplt           0x0800c3bc        0x0
+ .iplt          0x0800c3bc        0x0 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
 
-.rodata         0x0800c4c0      0x840
-                0x0800c4c0                . = ALIGN (0x4)
+.rodata         0x0800c3c0      0x840
+                0x0800c3c0                . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
  .rodata.Get_Angle2.str1.4
-                0x0800c4c0       0x12 CMakeFiles/BLDC5.elf.dir/Core/Src/AS5047.c.obj
- *fill*         0x0800c4d2        0x2 
+                0x0800c3c0       0x12 CMakeFiles/BLDC5.elf.dir/Core/Src/AS5047.c.obj
+ *fill*         0x0800c3d2        0x2 
  .rodata.alignSensor.str1.4
-                0x0800c4d4       0x1f CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
- *fill*         0x0800c4f3        0x1 
+                0x0800c3d4       0x1f CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+ *fill*         0x0800c3f3        0x1 
  .rodata.Motor_init.str1.4
-                0x0800c4f4       0x21 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
- *fill*         0x0800c515        0x3 
+                0x0800c3f4       0x21 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+ *fill*         0x0800c415        0x3 
  .rodata.sine_array
-                0x0800c518      0x320 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x0800c518                sine_array
+                0x0800c418      0x320 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x0800c418                sine_array
  .rodata.HAL_TIM_PeriodElapsedCallback.str1.4
-                0x0800c838        0x6 CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj
- *fill*         0x0800c83e        0x2 
+                0x0800c738        0x6 CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj
+ *fill*         0x0800c73e        0x2 
  .rodata.AHBPrescTable
-                0x0800c840       0x10 CMakeFiles/BLDC5.elf.dir/Core/Src/system_stm32g4xx.c.obj
-                0x0800c840                AHBPrescTable
+                0x0800c740       0x10 CMakeFiles/BLDC5.elf.dir/Core/Src/system_stm32g4xx.c.obj
+                0x0800c740                AHBPrescTable
  .rodata.APBPrescTable
-                0x0800c850        0x8 CMakeFiles/BLDC5.elf.dir/Core/Src/system_stm32g4xx.c.obj
-                0x0800c850                APBPrescTable
+                0x0800c750        0x8 CMakeFiles/BLDC5.elf.dir/Core/Src/system_stm32g4xx.c.obj
+                0x0800c750                APBPrescTable
  .rodata.UARTPrescTable
-                0x0800c858       0x18 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
-                0x0800c858                UARTPrescTable
+                0x0800c758       0x18 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+                0x0800c758                UARTPrescTable
  .rodata.denominator.0
-                0x0800c870        0x8 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
+                0x0800c770        0x8 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
  .rodata.numerator.1
-                0x0800c878        0x8 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
+                0x0800c778        0x8 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
  .rodata._global_impure_ptr
-                0x0800c880        0x4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-impure.o)
-                0x0800c880                _global_impure_ptr
+                0x0800c780        0x4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-impure.o)
+                0x0800c780                _global_impure_ptr
  .rodata._puts_r.str1.4
-                0x0800c884        0x6 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-puts.o)
+                0x0800c784        0x6 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-puts.o)
                                   0x2 (size before relaxing)
  .rodata._vfprintf_r.str1.4
-                0x0800c884       0x42 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-vfprintf.o)
- *fill*         0x0800c8c6        0x2 
+                0x0800c784       0x42 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-vfprintf.o)
+ *fill*         0x0800c7c6        0x2 
  .rodata.blanks.1
-                0x0800c8c8       0x10 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-vfprintf.o)
+                0x0800c7c8       0x10 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-vfprintf.o)
  .rodata.zeroes.0
-                0x0800c8d8       0x10 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-vfprintf.o)
+                0x0800c7d8       0x10 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-vfprintf.o)
  .rodata._dtoa_r.str1.4
-                0x0800c8e8       0xa2 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-dtoa.o)
+                0x0800c7e8       0xa2 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-dtoa.o)
                                  0xa6 (size before relaxing)
- *fill*         0x0800c98a        0x2 
+ *fill*         0x0800c88a        0x2 
  .rodata.__multadd.str1.4
-                0x0800c98c       0x7f c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
+                0x0800c88c       0x7f c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
                                  0x93 (size before relaxing)
- *fill*         0x0800ca0b        0x5 
+ *fill*         0x0800c90b        0x5 
  .rodata.__mprec_bigtens
-                0x0800ca10       0x28 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
-                0x0800ca10                __mprec_bigtens
+                0x0800c910       0x28 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
+                0x0800c910                __mprec_bigtens
  .rodata.__mprec_tens
-                0x0800ca38       0xc8 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
-                0x0800ca38                __mprec_tens
- .rodata.p05.0  0x0800cb00        0xc c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
+                0x0800c938       0xc8 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
+                0x0800c938                __mprec_tens
+ .rodata.p05.0  0x0800ca00        0xc c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-mprec.o)
  .rodata._vfiprintf_r.str1.4
-                0x0800cb0c       0x2f c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-vfiprintf.o)
+                0x0800ca0c       0x2f c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-vfiprintf.o)
  .rodata.blanks.1
-                0x0800cb0c       0x10 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-vfiprintf.o)
+                0x0800ca0c       0x10 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-vfiprintf.o)
  .rodata.zeroes.0
-                0x0800cb1c       0x10 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-vfiprintf.o)
+                0x0800ca1c       0x10 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-vfiprintf.o)
  .rodata.__assert_func.str1.4
-                0x0800cb2c       0x3f c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-assert.o)
+                0x0800ca2c       0x3f c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-assert.o)
                                  0x43 (size before relaxing)
- *fill*         0x0800cb6b        0x1 
+ *fill*         0x0800ca6b        0x1 
  .rodata._setlocale_r.str1.4
-                0x0800cb6c        0xa c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-locale.o)
+                0x0800ca6c        0xa c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-locale.o)
                                   0xd (size before relaxing)
- *fill*         0x0800cb76        0x2 
+ *fill*         0x0800ca76        0x2 
  .rodata.str1.4
-                0x0800cb78        0x2 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-locale.o)
- *fill*         0x0800cb7a        0x2 
+                0x0800ca78        0x2 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-locale.o)
+ *fill*         0x0800ca7a        0x2 
  .rodata._ctype_
-                0x0800cb7c      0x101 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-ctype_.o)
-                0x0800cb7c                _ctype_
- *fill*         0x0800cc7d        0x3 
+                0x0800ca7c      0x101 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-ctype_.o)
+                0x0800ca7c                _ctype_
+ *fill*         0x0800cb7d        0x3 
  .rodata.CSWTCH.8
-                0x0800cc80       0x18 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a(lib_a-e_atan2.o)
+                0x0800cb80       0x18 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a(lib_a-e_atan2.o)
  .rodata.CSWTCH.9
-                0x0800cc98       0x18 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a(lib_a-e_atan2.o)
- .rodata.Zero   0x0800ccb0       0x10 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a(lib_a-e_fmod.o)
+                0x0800cb98       0x18 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a(lib_a-e_atan2.o)
+ .rodata.Zero   0x0800cbb0       0x10 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a(lib_a-e_fmod.o)
  .rodata.atanhi
-                0x0800ccc0       0x20 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a(lib_a-s_atan.o)
+                0x0800cbc0       0x20 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a(lib_a-s_atan.o)
  .rodata.atanlo
-                0x0800cce0       0x20 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a(lib_a-s_atan.o)
-                0x0800cd00                . = ALIGN (0x4)
+                0x0800cbe0       0x20 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a(lib_a-s_atan.o)
+                0x0800cc00                . = ALIGN (0x4)
 
-.ARM.extab      0x0800cd00        0x0
-                0x0800cd00                . = ALIGN (0x4)
+.ARM.extab      0x0800cc00        0x0
+                0x0800cc00                . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0800cd00                . = ALIGN (0x4)
+                0x0800cc00                . = ALIGN (0x4)
 
-.ARM            0x0800cd00        0x8
-                0x0800cd00                . = ALIGN (0x4)
-                0x0800cd00                __exidx_start = .
+.ARM            0x0800cc00        0x8
+                0x0800cc00                . = ALIGN (0x4)
+                0x0800cc00                __exidx_start = .
  *(.ARM.exidx*)
- .ARM.exidx     0x0800cd00        0x8 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp\libgcc.a(_udivmoddi4.o)
-                0x0800cd08                __exidx_end = .
-                0x0800cd08                . = ALIGN (0x4)
+ .ARM.exidx     0x0800cc00        0x8 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp\libgcc.a(_udivmoddi4.o)
+                0x0800cc08                __exidx_end = .
+                0x0800cc08                . = ALIGN (0x4)
 
-.rel.dyn        0x0800cd08        0x0
- .rel.iplt      0x0800cd08        0x0 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
+.rel.dyn        0x0800cc08        0x0
+ .rel.iplt      0x0800cc08        0x0 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
 
-.preinit_array  0x0800cd08        0x0
-                0x0800cd08                . = ALIGN (0x4)
-                0x0800cd08                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x0800cc08        0x0
+                0x0800cc08                . = ALIGN (0x4)
+                0x0800cc08                PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x0800cd08                PROVIDE (__preinit_array_end = .)
-                0x0800cd08                . = ALIGN (0x4)
+                0x0800cc08                PROVIDE (__preinit_array_end = .)
+                0x0800cc08                . = ALIGN (0x4)
 
-.init_array     0x0800cd08        0x8
-                0x0800cd08                . = ALIGN (0x4)
-                0x0800cd08                PROVIDE (__init_array_start = .)
+.init_array     0x0800cc08        0x8
+                0x0800cc08                . = ALIGN (0x4)
+                0x0800cc08                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  .init_array.00000
-                0x0800cd08        0x4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-__call_atexit.o)
+                0x0800cc08        0x4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(lib_a-__call_atexit.o)
  *(.init_array*)
- .init_array    0x0800cd0c        0x4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
-                0x0800cd10                PROVIDE (__init_array_end = .)
-                0x0800cd10                . = ALIGN (0x4)
+ .init_array    0x0800cc0c        0x4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
+                0x0800cc10                PROVIDE (__init_array_end = .)
+                0x0800cc10                . = ALIGN (0x4)
 
-.fini_array     0x0800cd10        0x4
-                0x0800cd10                . = ALIGN (0x4)
-                0x0800cd10                PROVIDE (__fini_array_start = .)
+.fini_array     0x0800cc10        0x4
+                0x0800cc10                . = ALIGN (0x4)
+                0x0800cc10                PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x0800cd10        0x4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
-                0x0800cd14                PROVIDE (__fini_array_end = .)
-                0x0800cd14                . = ALIGN (0x4)
-                0x0800cd14                _sidata = LOADADDR (.data)
+ .fini_array    0x0800cc10        0x4 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
+                0x0800cc14                PROVIDE (__fini_array_end = .)
+                0x0800cc14                . = ALIGN (0x4)
+                0x0800cc14                _sidata = LOADADDR (.data)
 
-.data           0x20000000      0x9c8 load address 0x0800cd14
+.data           0x20000000      0x9c8 load address 0x0800cc14
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
  *(.data)
@@ -2932,11 +2931,11 @@ LOAD c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-202
                 0x200009c8                . = ALIGN (0x4)
                 0x200009c8                _edata = .
 
-.igot.plt       0x200009c8        0x0 load address 0x0800d6dc
+.igot.plt       0x200009c8        0x0 load address 0x0800d5dc
  .igot.plt      0x200009c8        0x0 c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
                 0x200009c8                . = ALIGN (0x4)
 
-.bss            0x200009c8      0x2b4 load address 0x0800d6dc
+.bss            0x200009c8      0x2b4 load address 0x0800d5dc
                 0x200009c8                _sbss = .
                 0x200009c8                __bss_start__ = _sbss
  *(.bss)
@@ -2963,62 +2962,60 @@ LOAD c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-202
  .bss.integral_vel_prev
                 0x20000a64        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
                 0x20000a64                integral_vel_prev
- .bss.open_loop_timestamp
-                0x20000a68        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x20000a68                open_loop_timestamp
  .bss.output_vel_prev
-                0x20000a6c        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x20000a6c                output_vel_prev
+                0x20000a68        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x20000a68                output_vel_prev
  .bss.output_vel_ramp
-                0x20000a70        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x20000a70                output_vel_ramp
+                0x20000a6c        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x20000a6c                output_vel_ramp
  .bss.pid_ang_D
-                0x20000a74        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x20000a74                pid_ang_D
+                0x20000a70        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x20000a70                pid_ang_D
  .bss.pid_ang_P
-                0x20000a78        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x20000a78                pid_ang_P
+                0x20000a74        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x20000a74                pid_ang_P
  .bss.pid_ang_timestamp
-                0x20000a7c        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x20000a7c                pid_ang_timestamp
+                0x20000a78        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x20000a78                pid_ang_timestamp
  .bss.pid_vel_I
-                0x20000a80        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x20000a80                pid_vel_I
+                0x20000a7c        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x20000a7c                pid_vel_I
  .bss.pid_vel_P
-                0x20000a84        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x20000a84                pid_vel_P
+                0x20000a80        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x20000a80                pid_vel_P
  .bss.pid_vel_timestamp
-                0x20000a88        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x20000a88                pid_vel_timestamp
+                0x20000a84        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x20000a84                pid_vel_timestamp
  .bss.sensor_direction
-                0x20000a8c        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x20000a8c                sensor_direction
+                0x20000a88        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x20000a88                sensor_direction
  .bss.sensor_offset
-                0x20000a90        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x20000a90                sensor_offset
+                0x20000a8c        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x20000a8c                sensor_offset
  .bss.shaft_angle
-                0x20000a94        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x20000a94                shaft_angle
+                0x20000a90        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x20000a90                shaft_angle
  .bss.shaft_velocity
-                0x20000a98        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x20000a98                shaft_velocity
- .bss.target    0x20000a9c        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x20000a9c                target
+                0x20000a94        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x20000a94                shaft_velocity
+ .bss.target    0x20000a98        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x20000a98                target
  .bss.torque_controller
-                0x20000aa0        0x1 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x20000aa0                torque_controller
- *fill*         0x20000aa1        0x3 
+                0x20000a9c        0x1 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x20000a9c                torque_controller
+ *fill*         0x20000a9d        0x3 
  .bss.voltage_sensor_align
-                0x20000aa4        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x20000aa4                voltage_sensor_align
+                0x20000aa0        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x20000aa0                voltage_sensor_align
  .bss.y_vel_prev
-                0x20000aa8        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x20000aa8                y_vel_prev
+                0x20000aa4        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x20000aa4                y_vel_prev
  .bss.zero_electric_angle
-                0x20000aac        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
-                0x20000aac                zero_electric_angle
+                0x20000aa8        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
+                0x20000aa8                zero_electric_angle
  .bss.Delay1ms.0
-                0x20000ab0        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj
+                0x20000aac        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj
+ .bss.th.0      0x20000ab0        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj
  .bss.gHuart    0x20000ab4        0x4 CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
                 0x20000ab4                gHuart
  .bss.__sbrk_heap_end
@@ -3069,7 +3066,7 @@ LOAD c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-202
                 0x20000c7c                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x20000c7c      0x604 load address 0x0800d6dc
+                0x20000c7c      0x604 load address 0x0800d5dc
                 0x20000c80                . = ALIGN (0x8)
  *fill*         0x20000c7c        0x4 
                 [!provide]                PROVIDE (end = .)
@@ -3296,87 +3293,87 @@ LOAD c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-202
 LOAD c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a
 LOAD c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp\libgcc.a
 
-.debug_info     0x00000000    0x23a4f
+.debug_info     0x00000000    0x23aaa
  .debug_info    0x00000000     0x1070 CMakeFiles/BLDC5.elf.dir/Core/Src/AS5047.c.obj
  .debug_info    0x00001070      0xfec CMakeFiles/BLDC5.elf.dir/Core/Src/adc.c.obj
  .debug_info    0x0000205c     0x2294 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
  .debug_info    0x000042f0      0x525 CMakeFiles/BLDC5.elf.dir/Core/Src/gpio.c.obj
- .debug_info    0x00004815      0x99e CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj
- .debug_info    0x000051b3      0xb59 CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj
- .debug_info    0x00005d0c     0x150d CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
- .debug_info    0x00007219      0x33e CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_hal_msp.c.obj
- .debug_info    0x00007557      0x912 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
- .debug_info    0x00007e69      0x6ca CMakeFiles/BLDC5.elf.dir/Core/Src/syscalls.c.obj
- .debug_info    0x00008533      0x174 CMakeFiles/BLDC5.elf.dir/Core/Src/sysmem.c.obj
- .debug_info    0x000086a7      0x3f9 CMakeFiles/BLDC5.elf.dir/Core/Src/system_stm32g4xx.c.obj
- .debug_info    0x00008aa0     0x14cb CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj
- .debug_info    0x00009f6b      0xea8 CMakeFiles/BLDC5.elf.dir/Core/Src/usart.c.obj
- .debug_info    0x0000ae13       0x22 CMakeFiles/BLDC5.elf.dir/Core/Startup/startup_stm32g431cbtx.s.obj
- .debug_info    0x0000ae35      0xb73 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
- .debug_info    0x0000b9a8     0x3722 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c.obj
- .debug_info    0x0000f0ca     0x2fa8 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.c.obj
- .debug_info    0x00012072     0x1041 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c.obj
- .debug_info    0x000130b3      0x865 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c.obj
- .debug_info    0x00013918      0xa07 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c.obj
- .debug_info    0x0001431f      0xe96 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
- .debug_info    0x000151b5      0xecf CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.c.obj
- .debug_info    0x00016084     0x40a4 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
- .debug_info    0x0001a128     0x250e CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
- .debug_info    0x0001c636     0x61e5 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
- .debug_info    0x0002281b     0x1234 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
+ .debug_info    0x00004815      0x98d CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj
+ .debug_info    0x000051a2      0xbc5 CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj
+ .debug_info    0x00005d67     0x150d CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
+ .debug_info    0x00007274      0x33e CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_hal_msp.c.obj
+ .debug_info    0x000075b2      0x912 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
+ .debug_info    0x00007ec4      0x6ca CMakeFiles/BLDC5.elf.dir/Core/Src/syscalls.c.obj
+ .debug_info    0x0000858e      0x174 CMakeFiles/BLDC5.elf.dir/Core/Src/sysmem.c.obj
+ .debug_info    0x00008702      0x3f9 CMakeFiles/BLDC5.elf.dir/Core/Src/system_stm32g4xx.c.obj
+ .debug_info    0x00008afb     0x14cb CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj
+ .debug_info    0x00009fc6      0xea8 CMakeFiles/BLDC5.elf.dir/Core/Src/usart.c.obj
+ .debug_info    0x0000ae6e       0x22 CMakeFiles/BLDC5.elf.dir/Core/Startup/startup_stm32g431cbtx.s.obj
+ .debug_info    0x0000ae90      0xb73 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
+ .debug_info    0x0000ba03     0x3722 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c.obj
+ .debug_info    0x0000f125     0x2fa8 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.c.obj
+ .debug_info    0x000120cd     0x1041 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c.obj
+ .debug_info    0x0001310e      0x865 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c.obj
+ .debug_info    0x00013973      0xa07 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c.obj
+ .debug_info    0x0001437a      0xe96 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
+ .debug_info    0x00015210      0xecf CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.c.obj
+ .debug_info    0x000160df     0x40a4 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+ .debug_info    0x0001a183     0x250e CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
+ .debug_info    0x0001c691     0x61e5 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+ .debug_info    0x00022876     0x1234 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
 
-.debug_abbrev   0x00000000     0x398a
+.debug_abbrev   0x00000000     0x39b3
  .debug_abbrev  0x00000000      0x259 CMakeFiles/BLDC5.elf.dir/Core/Src/AS5047.c.obj
  .debug_abbrev  0x00000259      0x1e4 CMakeFiles/BLDC5.elf.dir/Core/Src/adc.c.obj
  .debug_abbrev  0x0000043d      0x387 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
  .debug_abbrev  0x000007c4      0x14e CMakeFiles/BLDC5.elf.dir/Core/Src/gpio.c.obj
- .debug_abbrev  0x00000912      0x20d CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj
- .debug_abbrev  0x00000b1f      0x1f8 CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj
- .debug_abbrev  0x00000d17      0x2b4 CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
- .debug_abbrev  0x00000fcb       0xd6 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_hal_msp.c.obj
- .debug_abbrev  0x000010a1      0x1aa CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
- .debug_abbrev  0x0000124b      0x1a3 CMakeFiles/BLDC5.elf.dir/Core/Src/syscalls.c.obj
- .debug_abbrev  0x000013ee       0xe7 CMakeFiles/BLDC5.elf.dir/Core/Src/sysmem.c.obj
- .debug_abbrev  0x000014d5      0x119 CMakeFiles/BLDC5.elf.dir/Core/Src/system_stm32g4xx.c.obj
- .debug_abbrev  0x000015ee      0x261 CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj
- .debug_abbrev  0x0000184f      0x1eb CMakeFiles/BLDC5.elf.dir/Core/Src/usart.c.obj
- .debug_abbrev  0x00001a3a       0x12 CMakeFiles/BLDC5.elf.dir/Core/Startup/startup_stm32g431cbtx.s.obj
- .debug_abbrev  0x00001a4c      0x23e CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
- .debug_abbrev  0x00001c8a      0x2cb CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c.obj
- .debug_abbrev  0x00001f55      0x33c CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.c.obj
- .debug_abbrev  0x00002291      0x361 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c.obj
- .debug_abbrev  0x000025f2      0x1e6 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c.obj
- .debug_abbrev  0x000027d8      0x245 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c.obj
- .debug_abbrev  0x00002a1d      0x26f CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
- .debug_abbrev  0x00002c8c      0x243 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.c.obj
- .debug_abbrev  0x00002ecf      0x25c CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
- .debug_abbrev  0x0000312b      0x272 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
- .debug_abbrev  0x0000339d      0x306 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
- .debug_abbrev  0x000036a3      0x2e7 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
+ .debug_abbrev  0x00000912      0x20f CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj
+ .debug_abbrev  0x00000b21      0x21f CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj
+ .debug_abbrev  0x00000d40      0x2b4 CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
+ .debug_abbrev  0x00000ff4       0xd6 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_hal_msp.c.obj
+ .debug_abbrev  0x000010ca      0x1aa CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
+ .debug_abbrev  0x00001274      0x1a3 CMakeFiles/BLDC5.elf.dir/Core/Src/syscalls.c.obj
+ .debug_abbrev  0x00001417       0xe7 CMakeFiles/BLDC5.elf.dir/Core/Src/sysmem.c.obj
+ .debug_abbrev  0x000014fe      0x119 CMakeFiles/BLDC5.elf.dir/Core/Src/system_stm32g4xx.c.obj
+ .debug_abbrev  0x00001617      0x261 CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj
+ .debug_abbrev  0x00001878      0x1eb CMakeFiles/BLDC5.elf.dir/Core/Src/usart.c.obj
+ .debug_abbrev  0x00001a63       0x12 CMakeFiles/BLDC5.elf.dir/Core/Startup/startup_stm32g431cbtx.s.obj
+ .debug_abbrev  0x00001a75      0x23e CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
+ .debug_abbrev  0x00001cb3      0x2cb CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c.obj
+ .debug_abbrev  0x00001f7e      0x33c CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.c.obj
+ .debug_abbrev  0x000022ba      0x361 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c.obj
+ .debug_abbrev  0x0000261b      0x1e6 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c.obj
+ .debug_abbrev  0x00002801      0x245 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c.obj
+ .debug_abbrev  0x00002a46      0x26f CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
+ .debug_abbrev  0x00002cb5      0x243 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.c.obj
+ .debug_abbrev  0x00002ef8      0x25c CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+ .debug_abbrev  0x00003154      0x272 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
+ .debug_abbrev  0x000033c6      0x306 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+ .debug_abbrev  0x000036cc      0x2e7 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
 
-.debug_loc      0x00000000    0x183f2
+.debug_loc      0x00000000    0x183d5
  .debug_loc     0x00000000      0x51f CMakeFiles/BLDC5.elf.dir/Core/Src/AS5047.c.obj
  .debug_loc     0x0000051f       0x64 CMakeFiles/BLDC5.elf.dir/Core/Src/adc.c.obj
  .debug_loc     0x00000583      0xbb0 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
- .debug_loc     0x00001133       0x5f CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj
- .debug_loc     0x00001192      0x389 CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
- .debug_loc     0x0000151b      0x331 CMakeFiles/BLDC5.elf.dir/Core/Src/syscalls.c.obj
- .debug_loc     0x0000184c       0x64 CMakeFiles/BLDC5.elf.dir/Core/Src/sysmem.c.obj
- .debug_loc     0x000018b0       0x9d CMakeFiles/BLDC5.elf.dir/Core/Src/system_stm32g4xx.c.obj
- .debug_loc     0x0000194d      0x100 CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj
- .debug_loc     0x00001a4d       0x9e CMakeFiles/BLDC5.elf.dir/Core/Src/usart.c.obj
- .debug_loc     0x00001aeb      0x1ef CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
- .debug_loc     0x00001cda     0x2849 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c.obj
- .debug_loc     0x00004523     0x2526 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.c.obj
- .debug_loc     0x00006a49      0x736 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c.obj
- .debug_loc     0x0000717f      0x3b3 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c.obj
- .debug_loc     0x00007532      0xa06 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c.obj
- .debug_loc     0x00007f38      0x84d CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
- .debug_loc     0x00008785     0x11a5 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.c.obj
- .debug_loc     0x0000992a     0x57ca CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
- .debug_loc     0x0000f0f4     0x2acf CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
- .debug_loc     0x00011bc3     0x5bec CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
- .debug_loc     0x000177af      0xc43 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
+ .debug_loc     0x00001133       0x42 CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj
+ .debug_loc     0x00001175      0x389 CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
+ .debug_loc     0x000014fe      0x331 CMakeFiles/BLDC5.elf.dir/Core/Src/syscalls.c.obj
+ .debug_loc     0x0000182f       0x64 CMakeFiles/BLDC5.elf.dir/Core/Src/sysmem.c.obj
+ .debug_loc     0x00001893       0x9d CMakeFiles/BLDC5.elf.dir/Core/Src/system_stm32g4xx.c.obj
+ .debug_loc     0x00001930      0x100 CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj
+ .debug_loc     0x00001a30       0x9e CMakeFiles/BLDC5.elf.dir/Core/Src/usart.c.obj
+ .debug_loc     0x00001ace      0x1ef CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
+ .debug_loc     0x00001cbd     0x2849 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c.obj
+ .debug_loc     0x00004506     0x2526 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.c.obj
+ .debug_loc     0x00006a2c      0x736 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c.obj
+ .debug_loc     0x00007162      0x3b3 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c.obj
+ .debug_loc     0x00007515      0xa06 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c.obj
+ .debug_loc     0x00007f1b      0x84d CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
+ .debug_loc     0x00008768     0x11a5 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.c.obj
+ .debug_loc     0x0000990d     0x57ca CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+ .debug_loc     0x0000f0d7     0x2acf CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
+ .debug_loc     0x00011ba6     0x5bec CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+ .debug_loc     0x00017792      0xc43 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
 
 .debug_aranges  0x00000000     0x1408
  .debug_aranges
@@ -3439,8 +3436,8 @@ LOAD c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-202
  .debug_ranges  0x00000068       0x20 CMakeFiles/BLDC5.elf.dir/Core/Src/adc.c.obj
  .debug_ranges  0x00000088       0xd0 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
  .debug_ranges  0x00000158       0x10 CMakeFiles/BLDC5.elf.dir/Core/Src/gpio.c.obj
- .debug_ranges  0x00000168       0x30 CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj
- .debug_ranges  0x00000198       0x20 CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj
+ .debug_ranges  0x00000168       0x18 CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj
+ .debug_ranges  0x00000180       0x38 CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj
  .debug_ranges  0x000001b8       0x40 CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
  .debug_ranges  0x000001f8       0x10 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_hal_msp.c.obj
  .debug_ranges  0x00000208       0x60 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
@@ -3463,36 +3460,36 @@ LOAD c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-202
  .debug_ranges  0x000012c8      0x238 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
  .debug_ranges  0x00001500       0x90 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
 
-.debug_line     0x00000000    0x1b891
+.debug_line     0x00000000    0x1b89b
  .debug_line    0x00000000      0x7a6 CMakeFiles/BLDC5.elf.dir/Core/Src/AS5047.c.obj
  .debug_line    0x000007a6      0x4ac CMakeFiles/BLDC5.elf.dir/Core/Src/adc.c.obj
  .debug_line    0x00000c52      0xfa8 CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj
  .debug_line    0x00001bfa      0x28a CMakeFiles/BLDC5.elf.dir/Core/Src/gpio.c.obj
- .debug_line    0x00001e84      0x37a CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj
- .debug_line    0x000021fe      0x487 CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj
- .debug_line    0x00002685      0x51e CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
- .debug_line    0x00002ba3      0x248 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_hal_msp.c.obj
- .debug_line    0x00002deb      0x39a CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
- .debug_line    0x00003185      0x3ee CMakeFiles/BLDC5.elf.dir/Core/Src/syscalls.c.obj
- .debug_line    0x00003573      0x241 CMakeFiles/BLDC5.elf.dir/Core/Src/sysmem.c.obj
- .debug_line    0x000037b4      0x29c CMakeFiles/BLDC5.elf.dir/Core/Src/system_stm32g4xx.c.obj
- .debug_line    0x00003a50      0x6b0 CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj
- .debug_line    0x00004100      0x47b CMakeFiles/BLDC5.elf.dir/Core/Src/usart.c.obj
- .debug_line    0x0000457b       0xae CMakeFiles/BLDC5.elf.dir/Core/Startup/startup_stm32g431cbtx.s.obj
- .debug_line    0x00004629      0x758 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
- .debug_line    0x00004d81     0x24f3 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c.obj
- .debug_line    0x00007274     0x1fb4 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.c.obj
- .debug_line    0x00009228      0x838 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c.obj
- .debug_line    0x00009a60      0x730 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c.obj
- .debug_line    0x0000a190      0xb42 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c.obj
- .debug_line    0x0000acd2      0xe91 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
- .debug_line    0x0000bb63     0x1106 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.c.obj
- .debug_line    0x0000cc69     0x5400 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
- .debug_line    0x00012069     0x2655 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
- .debug_line    0x000146be     0x6406 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
- .debug_line    0x0001aac4      0xdcd CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
+ .debug_line    0x00001e84      0x36a CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj
+ .debug_line    0x000021ee      0x4a1 CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj
+ .debug_line    0x0000268f      0x51e CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
+ .debug_line    0x00002bad      0x248 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_hal_msp.c.obj
+ .debug_line    0x00002df5      0x39a CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
+ .debug_line    0x0000318f      0x3ee CMakeFiles/BLDC5.elf.dir/Core/Src/syscalls.c.obj
+ .debug_line    0x0000357d      0x241 CMakeFiles/BLDC5.elf.dir/Core/Src/sysmem.c.obj
+ .debug_line    0x000037be      0x29c CMakeFiles/BLDC5.elf.dir/Core/Src/system_stm32g4xx.c.obj
+ .debug_line    0x00003a5a      0x6b0 CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj
+ .debug_line    0x0000410a      0x47b CMakeFiles/BLDC5.elf.dir/Core/Src/usart.c.obj
+ .debug_line    0x00004585       0xae CMakeFiles/BLDC5.elf.dir/Core/Startup/startup_stm32g431cbtx.s.obj
+ .debug_line    0x00004633      0x758 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
+ .debug_line    0x00004d8b     0x24f3 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c.obj
+ .debug_line    0x0000727e     0x1fb4 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.c.obj
+ .debug_line    0x00009232      0x838 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c.obj
+ .debug_line    0x00009a6a      0x730 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c.obj
+ .debug_line    0x0000a19a      0xb42 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c.obj
+ .debug_line    0x0000acdc      0xe91 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
+ .debug_line    0x0000bb6d     0x1106 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.c.obj
+ .debug_line    0x0000cc73     0x5400 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+ .debug_line    0x00012073     0x2655 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
+ .debug_line    0x000146c8     0x6406 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+ .debug_line    0x0001aace      0xdcd CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
 
-.debug_str      0x00000000     0x73e1
+.debug_str      0x00000000     0x73f0
  .debug_str     0x00000000      0x5fb CMakeFiles/BLDC5.elf.dir/Core/Src/AS5047.c.obj
                                 0x668 (size before relaxing)
  .debug_str     0x000005fb      0x7df CMakeFiles/BLDC5.elf.dir/Core/Src/adc.c.obj
@@ -3502,50 +3499,50 @@ LOAD c:/progra~1/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-202
  .debug_str     0x0000161d       0x45 CMakeFiles/BLDC5.elf.dir/Core/Src/gpio.c.obj
                                 0x3fe (size before relaxing)
  .debug_str     0x00001662       0xa8 CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj
-                                0x8bf (size before relaxing)
- .debug_str     0x0000170a      0x432 CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj
-                                0x9af (size before relaxing)
- .debug_str     0x00001b3c      0x533 CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
+                                0x8b1 (size before relaxing)
+ .debug_str     0x0000170a      0x441 CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj
+                                0x9e9 (size before relaxing)
+ .debug_str     0x00001b4b      0x533 CMakeFiles/BLDC5.elf.dir/Core/Src/retarget.c.obj
                                 0xccd (size before relaxing)
- .debug_str     0x0000206f       0x72 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_hal_msp.c.obj
+ .debug_str     0x0000207e       0x72 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_hal_msp.c.obj
                                 0x36e (size before relaxing)
- .debug_str     0x000020e1      0x115 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
+ .debug_str     0x000020f0      0x115 CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj
                                 0x8d7 (size before relaxing)
- .debug_str     0x000021f6      0x111 CMakeFiles/BLDC5.elf.dir/Core/Src/syscalls.c.obj
+ .debug_str     0x00002205      0x111 CMakeFiles/BLDC5.elf.dir/Core/Src/syscalls.c.obj
                                 0x418 (size before relaxing)
- .debug_str     0x00002307       0x9a CMakeFiles/BLDC5.elf.dir/Core/Src/sysmem.c.obj
+ .debug_str     0x00002316       0x9a CMakeFiles/BLDC5.elf.dir/Core/Src/sysmem.c.obj
                                 0x261 (size before relaxing)
- .debug_str     0x000023a1       0xac CMakeFiles/BLDC5.elf.dir/Core/Src/system_stm32g4xx.c.obj
+ .debug_str     0x000023b0       0xac CMakeFiles/BLDC5.elf.dir/Core/Src/system_stm32g4xx.c.obj
                                 0x3b3 (size before relaxing)
- .debug_str     0x0000244d      0x799 CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj
+ .debug_str     0x0000245c      0x799 CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj
                                0x11de (size before relaxing)
- .debug_str     0x00002be6       0xcd CMakeFiles/BLDC5.elf.dir/Core/Src/usart.c.obj
+ .debug_str     0x00002bf5       0xcd CMakeFiles/BLDC5.elf.dir/Core/Src/usart.c.obj
                                 0xb89 (size before relaxing)
- .debug_str     0x00002cb3       0x5b CMakeFiles/BLDC5.elf.dir/Core/Startup/startup_stm32g431cbtx.s.obj
+ .debug_str     0x00002cc2       0x5b CMakeFiles/BLDC5.elf.dir/Core/Startup/startup_stm32g431cbtx.s.obj
                                  0x95 (size before relaxing)
- .debug_str     0x00002d0e      0x45b CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
+ .debug_str     0x00002d1d      0x45b CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
                                 0xc7b (size before relaxing)
- .debug_str     0x00003169      0xa38 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c.obj
+ .debug_str     0x00003178      0xa38 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c.obj
                                0x134b (size before relaxing)
- .debug_str     0x00003ba1      0x5d9 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.c.obj
+ .debug_str     0x00003bb0      0x5d9 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.c.obj
                                0x12f4 (size before relaxing)
- .debug_str     0x0000417a      0x4a0 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c.obj
+ .debug_str     0x00004189      0x4a0 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c.obj
                                 0xbca (size before relaxing)
- .debug_str     0x0000461a      0x120 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c.obj
+ .debug_str     0x00004629      0x120 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c.obj
                                 0x580 (size before relaxing)
- .debug_str     0x0000473a      0x500 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c.obj
+ .debug_str     0x00004749      0x500 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c.obj
                                 0x822 (size before relaxing)
- .debug_str     0x00004c3a      0x288 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
+ .debug_str     0x00004c49      0x288 CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
                                 0x86f (size before relaxing)
- .debug_str     0x00004ec2      0x39a CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.c.obj
+ .debug_str     0x00004ed1      0x39a CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.c.obj
                                 0xa56 (size before relaxing)
- .debug_str     0x0000525c      0xe6b CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+ .debug_str     0x0000526b      0xe6b CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
                                0x189f (size before relaxing)
- .debug_str     0x000060c7      0x83e CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
+ .debug_str     0x000060d6      0x83e CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
                                0x1507 (size before relaxing)
- .debug_str     0x00006905      0x88f CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+ .debug_str     0x00006914      0x88f CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
                                0x1242 (size before relaxing)
- .debug_str     0x00007194      0x24d CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
+ .debug_str     0x000071a3      0x24d CMakeFiles/BLDC5.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
                                 0xb51 (size before relaxing)
 
 .comment        0x00000000       0x49

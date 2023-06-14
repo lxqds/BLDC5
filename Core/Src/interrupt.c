@@ -27,7 +27,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htimx)
             Delay1ms=0;
         }
 
-        angleOpenloop(1.5);
+        //angleOpenloop(3.14);
         //velocityOpenloop(10.f);
         /*if(++interval_count % 1000 == 0)
         {

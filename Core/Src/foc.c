@@ -548,7 +548,7 @@ void foc_Init()
     velocity_limit = 10;         //rad/s angleOpenloop() and PID_angle() use it 速度限制
     voltage_sensor_align = 0.5;    //V     alignSensor() and driverAlign() use it，大功率电机0.5-1，小功率电机2-3
     torque_controller = Type_voltage;  //当前只有电压模式
-    controller = Type_velocity_openloop;  //Type_angle; //Type_torque;    //Type_velocity
+    controller = Type_angle;  //Type_angle; //Type_torque;    //Type_velocity
 
     HAL_GPIO_WritePin(GPIOA,GPIO_PIN_11,SET);
     HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
