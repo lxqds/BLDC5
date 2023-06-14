@@ -70,8 +70,22 @@ typedef enum
     Type_foc_current //!< torque control using dq currents
 } TorqueControlType;
 
+/******************************************************************************/
+/**
+ *  Direction structure
+ */
+typedef enum
+{
+    CW      = 1,  //clockwise
+    CCW     = -1, // counter clockwise
+    UNKNOWN = 0   //not yet known or invalid state
+} Direction;
 
 float velocityOpenloop(float target_velocity);
 float angleOpenloop(float target_angle);
 void foc_Init();
+void Motor_init(void);
+void Motor_initFOC(void);
+void loopFOC(void);
+void move(float new_target);
 #endif //BLDC5_FOC_H

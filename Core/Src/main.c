@@ -60,7 +60,8 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+extern float target;
+uint16_t interval_count = 0;
 /* USER CODE END 0 */
 
 /**
@@ -104,14 +105,30 @@ int main(void)
     interrupt_Init();
 
     foc_Init();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+      {
+          Get_Angle2();
+          //move(10);
+          //velocityOpenloop(10.f);
+          /*Get_Angle2();
+          move(target);
+          loopFOC();
+          if(++interval_count % 1000 == 0)
+          {
+              printf("Angle: %.2f", Get_Angle2());
+          }*/
+      }
+
+
+
       //velocityOpenloop(10.f);
-      angleOpenloop(10);
+      //angleOpenloop(10);
       //HAL_Delay(200);
 
       //Get_Angle2();

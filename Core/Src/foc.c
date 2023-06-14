@@ -9,7 +9,9 @@
 #include "AS5047.h"
 #define pi 3.1415926
 #define _constrain(amt,low,high) ((amt)<(low)?(low):((amt)>(high)?(high):(amt)))
-
+#define M1_Enable HAL_GPIO_WritePin(GPIOA,GPIO_PIN_11,GPIO_PIN_SET);
+#define M1_Disable HAL_GPIO_WritePin(GPIOA,GPIO_PIN_11,GPIO_PIN_RESET);
+#define frequency_divider 150
 
 long sensor_direction;
 float voltage_sensor_align;
@@ -30,6 +32,8 @@ float current_sp;
 float shaft_velocity_sp;
 float shaft_angle_sp;
 
+float target = 0;
+extern float angle_prev;
 DQVoltage_s voltage;
 DQCurrent_s current;
 
@@ -39,24 +43,7 @@ MotionControlType controller;
 float sensor_offset=0;
 
 
-void foc_Init()
-{
-    voltage_limit = 4;
-    voltage_power_supply = 12;
-    shaft_angle = 0;
-    velocity_limit =10;
 
-    HAL_GPIO_WritePin(GPIOA,GPIO_PIN_11,SET);
-    HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
-    HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_2);
-    HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_3);
-
-    __HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1,0);
-    __HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_2,0);
-    __HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_3,0);
-
-
-}
 //电角度求解
 float _electricalAngle(float shaft_angle,int _pole_pairs)
 {
@@ -250,9 +237,9 @@ float velocityOpenloop(float target_velocity)
     float Ts =  100*(1e-6f);//10us
 
     now_us = SysTick->VAL; //_micros();
-    if (now_us < open_loop_timestamp)Ts = (float) (open_loop_timestamp - now_us) / 150 * 1e-6;//150分频
+    if (now_us < open_loop_timestamp)Ts = (float) (open_loop_timestamp - now_us) / frequency_divider * 1e-6;//150分频
     else
-        Ts = (float) (0xFFFFFF - now_us + open_loop_timestamp) / 150 * 1e-6;//150分频
+        Ts = (float) (0xFFFFFF - now_us + open_loop_timestamp) / frequency_divider * 1e-6;//150分频
     open_loop_timestamp = now_us;  //save timestamp for next call
 
     shaft_angle = _normalizeAngle2(shaft_angle + target_velocity*Ts);//计算所需转动的机械角度，
@@ -272,9 +259,9 @@ float angleOpenloop(float target_angle) {
     float Ts, Uq;
 
     now_us = SysTick->VAL; //_micros();
-    if (now_us < open_loop_timestamp)Ts = (float) (open_loop_timestamp - now_us) / 150 * 1e-6;
+    if (now_us < open_loop_timestamp)Ts = (float) (open_loop_timestamp - now_us) / frequency_divider * 1e-6;
     else
-        Ts = (float) (0xFFFFFF - now_us + open_loop_timestamp) / 150 * 1e-6;
+        Ts = (float) (0xFFFFFF - now_us + open_loop_timestamp) / frequency_divider * 1e-6;
     open_loop_timestamp = now_us;  //save timestamp for next call
     // quick fix for strange cases (micros overflow)
     if (Ts == 0 || Ts > 0.5) Ts = 1e-3;
@@ -327,17 +314,253 @@ float electricalAngle(void)
 }
 int alignSensor(void)
 {
-    sensor_direction = 0;//
+    sensor_direction = CCW;//
 
-    setPhaseVoltage(voltage_sensor_align, 0, _3PI_2);  //计算零点偏移角度
+    setPhaseVoltage2(voltage_sensor_align, 0, _3PI_2);  //计算零点偏移角度
     HAL_Delay(700);
     zero_electric_angle = 5.0100;//_normalizeAngle(_electricalAngle(sensor_direction*getAngle(), pole_pairs));
     HAL_Delay(20);
     printf("MOT: Zero elec. angle:");
     printf("%.4f\r\n", zero_electric_angle);
 
-    setPhaseVoltage(0, 0, 0);
+    setPhaseVoltage2(0, 0, 0);
     HAL_Delay(200);
 
     return 1;
+}
+/*PID*/
+/******************************************************************************/
+float pid_vel_P, pid_ang_P;
+float pid_vel_I, pid_ang_D;
+float integral_vel_prev;
+float error_vel_prev, error_ang_prev;
+float output_vel_ramp;
+float output_vel_prev;
+unsigned long pid_vel_timestamp, pid_ang_timestamp;
+/******************************************************************************/
+void PID_init(void)
+{
+    pid_vel_P=0.1;  //0.1
+    pid_vel_I=2;    //2
+    output_vel_ramp=100;       //output derivative limit [volts/second]
+    integral_vel_prev=0;
+    error_vel_prev=0;
+    output_vel_prev=0;
+    pid_vel_timestamp=SysTick->VAL;
+
+    pid_ang_P=20;
+    pid_ang_D=1;
+    error_ang_prev=0;
+    pid_ang_timestamp=SysTick->VAL;
+}
+/******************************************************************************/
+// just P&I is enough,no need D
+float PID_velocity(float error)
+{
+    unsigned long now_us;
+    float Ts;
+    float proportional,integral,output;
+    float output_rate;
+
+    now_us = SysTick->VAL;
+    if(now_us<pid_vel_timestamp)Ts = (float)(pid_vel_timestamp - now_us)/frequency_divider*1e-6f;
+    else
+        Ts = (float)(0xFFFFFF - now_us + pid_vel_timestamp)/frequency_divider*1e-6f;
+    pid_vel_timestamp = now_us;
+    if(Ts == 0 || Ts > 0.5) Ts = 1e-3f;
+
+    // u(s) = (P + I/s + Ds)e(s)
+    // Discrete implementations
+    // proportional part
+    // u_p  = P *e(k)
+    proportional = pid_vel_P * error;
+    // Tustin transform of the integral part
+    // u_ik = u_ik_1  + I*Ts/2*(ek + ek_1)
+    integral = integral_vel_prev + pid_vel_I*Ts*0.5*(error + error_vel_prev);
+    // antiwindup - limit the output
+    integral = _constrain(integral, -voltage_limit, voltage_limit);
+
+    // sum all the components
+    output = proportional + integral;
+    // antiwindup - limit the output variable
+    output = _constrain(output, -voltage_limit, voltage_limit);
+
+    // limit the acceleration by ramping the output
+    output_rate = (output - output_vel_prev)/Ts;
+    if(output_rate > output_vel_ramp)output = output_vel_prev + output_vel_ramp*Ts;
+    else if(output_rate < -output_vel_ramp)output = output_vel_prev - output_vel_ramp*Ts;
+
+    // saving for the next pass
+    integral_vel_prev = integral;
+    output_vel_prev = output;
+    error_vel_prev = error;
+
+    return output;
+}
+/******************************************************************************/
+//P&D for angle_PID
+float PID_angle(float error)
+{
+    unsigned long now_us;
+    float Ts;
+    float proportional,derivative,output;
+    //float output_rate;
+
+    now_us = SysTick->VAL;
+    if(now_us<pid_ang_timestamp)Ts = (float)(pid_ang_timestamp - now_us)/frequency_divider*1e-6f;
+    else
+        Ts = (float)(0xFFFFFF - now_us + pid_ang_timestamp)/frequency_divider*1e-6f;
+    pid_ang_timestamp = now_us;
+    if(Ts == 0 || Ts > 0.5) Ts = 1e-3f;
+
+    // u(s) = (P + I/s + Ds)e(s)
+    // Discrete implementations
+    // proportional part
+    // u_p  = P *e(k)
+    proportional = pid_ang_P * error;
+    // u_dk = D(ek - ek_1)/Ts
+    derivative = pid_ang_D*(error - error_ang_prev)/Ts;
+
+    output = proportional + derivative;
+    output = _constrain(output, -velocity_limit, velocity_limit);
+
+    // limit the acceleration by ramping the output
+//	output_rate = (output - output_ang_prev)/Ts;
+//	if(output_rate > output_ang_ramp)output = output_ang_prev + output_ang_ramp*Ts;
+//	else if(output_rate < -output_ang_ramp)output = output_ang_prev - output_ang_ramp*Ts;
+
+    // saving for the next pass
+//	output_ang_prev = output;
+    error_ang_prev = error;
+
+    return output;
+}
+/******************************************************************************/
+/******************************************************************************/
+
+
+/******************************************************************************/
+void Motor_init(void) {
+    printf("MOT: Init\r\n");
+
+//	new_voltage_limit = current_limit * phase_resistance;
+//	voltage_limit = new_voltage_limit < voltage_limit ? new_voltage_limit : voltage_limit;
+    if (voltage_sensor_align > voltage_limit) voltage_sensor_align = voltage_limit;
+
+    pole_pairs = 6;
+    sensor_direction = UNKNOWN;
+
+    M1_Enable;
+    printf("MOT: Enable driver.\r\n");
+}
+
+/******************************************************************************/
+void Motor_initFOC(void) {
+    alignSensor();    //检测零点偏移量和极对数
+
+    //added the shaft_angle update
+    angle_prev = Get_Angle2();  //getVelocity(),make sure velocity=0 after power on
+    HAL_Delay(5);
+    shaft_velocity = shaftVelocity();  //必须调用一次，进入主循环后速度为0
+    HAL_Delay(5);
+    shaft_angle = shaftAngle();// shaft angle
+    if (controller == Type_angle)target = shaft_angle;//角度模式，以当前的角度为目标角度，进入主循环后电机静止
+
+    HAL_Delay(200);
+}
+
+/******************************************************************************/
+void loopFOC(void) {
+    if (controller == Type_angle_openloop || controller == Type_velocity_openloop) return;
+
+    shaft_angle = shaftAngle();// shaft angle
+    electrical_angle = electricalAngle();// electrical angle - need shaftAngle to be called first
+
+    switch (torque_controller) {
+        case Type_voltage:  // no need to do anything really
+            break;
+        case Type_dc_current:
+            break;
+        case Type_foc_current:
+            break;
+        default:
+            printf("MOT: no torque control selected!");
+            break;
+    }
+    // set the phase voltage - FOC heart function :)
+    setPhaseVoltage2(voltage.q, voltage.d, electrical_angle);
+}
+
+/******************************************************************************/
+void move(float new_target) {
+    shaft_velocity = shaftVelocity();
+
+    switch (controller) {
+        case Type_torque:
+            if (torque_controller == Type_voltage)voltage.q = new_target;  // if voltage torque control
+            else
+                current_sp = new_target; // if current/foc_current torque control
+            break;
+        case Type_angle:
+            // angle set point
+            shaft_angle_sp = new_target;
+            // calculate velocity set point
+            shaft_velocity_sp = PID_angle(shaft_angle_sp - shaft_angle);
+            // calculate the torque command
+            current_sp = PID_velocity(shaft_velocity_sp - shaft_velocity); // if voltage torque control
+            // if torque controlled through voltage
+            if (torque_controller == Type_voltage) {
+                voltage.q = current_sp;
+                voltage.d = 0;
+            }
+            break;
+        case Type_velocity:
+            // velocity set point
+            shaft_velocity_sp = new_target;
+            // calculate the torque command
+            current_sp = PID_velocity(shaft_velocity_sp - shaft_velocity); // if current/foc_current torque control
+            // if torque controlled through voltage control
+            if (torque_controller == Type_voltage) {
+                voltage.q = current_sp;  // use voltage if phase-resistance not provided
+                voltage.d = 0;
+            }
+            break;
+        case Type_velocity_openloop:
+            // velocity control in open loop
+            shaft_velocity_sp = new_target;
+            voltage.q = velocityOpenloop(shaft_velocity_sp); // returns the voltage that is set to the motor
+            voltage.d = 0;
+            break;
+        case Type_angle_openloop:
+            // angle control in open loop
+            shaft_angle_sp = new_target;
+            voltage.q = angleOpenloop(shaft_angle_sp); // returns the voltage that is set to the motor
+            voltage.d = 0;
+            break;
+    }
+}
+
+void foc_Init()
+{
+
+    voltage_power_supply = 12;   //V
+    voltage_limit = 4;           //V，最大值需小于12/1.732=6.9
+    velocity_limit = 10;         //rad/s angleOpenloop() and PID_angle() use it 速度限制
+    voltage_sensor_align = 0.5;    //V     alignSensor() and driverAlign() use it，大功率电机0.5-1，小功率电机2-3
+    torque_controller = Type_voltage;  //当前只有电压模式
+    controller = Type_velocity_openloop;  //Type_angle; //Type_torque;    //Type_velocity
+
+    HAL_GPIO_WritePin(GPIOA,GPIO_PIN_11,SET);
+    HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
+    HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_2);
+    HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_3);
+
+    __HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1,0);
+    __HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_2,0);
+    __HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_3,0);
+    Motor_init();
+    Motor_initFOC();
+    PID_init();
+
+    target = 10;
 }

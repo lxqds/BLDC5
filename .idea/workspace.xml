@@ -17,21 +17,32 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e23143c5-3df2-4a48-9b8f-f76c1e4bc1ba" name="Changes" comment="开环速度控制最优10rad/s,电压限制4V，电源电压限制12V，分频150，开环角度控制">
+    <list default="true" id="e23143c5-3df2-4a48-9b8f-f76c1e4bc1ba" name="Changes" comment="传感器移植1，方向未知">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Inc/AS5047.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/AS5047.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BLDC5.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/BLDC5.ioc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Inc/I_Current.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Inc/foc.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/foc.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/AS5047.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/AS5047.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/I_Current.c" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/foc.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/foc.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/interrupt.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/interrupt.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/tim.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/tim.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/BLDC5.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/BLDC5.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/BLDC5.elf" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/BLDC5.elf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/BLDC5.hex" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/BLDC5.hex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/BLDC5.map" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/BLDC5.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/AS5047.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/AS5047.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/foc.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/interrupt.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +58,11 @@
       <list>
         <option value="lxq" />
       </list>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -121,7 +137,9 @@
       <workItem from="1686450348059" duration="1031000" />
       <workItem from="1686458929790" duration="3236000" />
       <workItem from="1686462203002" duration="13638000" />
-      <workItem from="1686535132669" duration="42024000" />
+      <workItem from="1686535132669" duration="45410000" />
+      <workItem from="1686733279801" duration="2265000" />
+      <workItem from="1686735575987" duration="2088000" />
     </task>
     <task id="LOCAL-00001" summary="读取电机角度">
       <created>1686546314615</created>
@@ -144,16 +162,47 @@
       <option name="project" value="LOCAL" />
       <updated>1686665048709</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="传感器移植1，方向未知">
+      <created>1686709041200</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1686709041200</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="读取电机角度" />
     <MESSAGE value="电机正常运转，噪声小，但是对于开环速度要求为10rad/s" />
     <MESSAGE value="开环速度控制最优10rad/s,电压限制4V，电源电压限制12V，分频150，开环角度控制" />
-    <option name="LAST_COMMIT_MESSAGE" value="开环速度控制最优10rad/s,电压限制4V，电源电压限制12V，分频150，开环角度控制" />
+    <MESSAGE value="传感器移植1，方向未知" />
+    <option name="LAST_COMMIT_MESSAGE" value="传感器移植1，方向未知" />
   </component>
 </project>

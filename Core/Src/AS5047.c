@@ -215,12 +215,12 @@ uint16_t Read_Register(uint16_t addr)
 
     AS5047_CS_L;
     temp_back =  SPIx_ReadWrite_Byte(addr,temp_back);
-    printf("\ntemp_back:%d\n",temp_back);
+
     AS5047_CS_H;
     HAL_Delay(10);
     AS5047_CS_L;
     back = SPIx_ReadWrite_Byte(0,back);
-    printf("\nback:%d\n",back);
+
     AS5047_CS_H;
     HAL_Delay(10);
     return back;
@@ -240,11 +240,12 @@ uint16_t Write_Register(uint16_t addr,uint16_t data)
 
 float Get_Angle2()
 {
-    uint16_t a;
+    uint16_t a,c;
     float b;
     a=Read_Register(0x3FFC)&0x0fff;     //AGC=>bit11:MAGL,bit10:MAGH,bit7-0:AGC   0x01AD
     b=((float)(Read_Register(0x3FFF)&0x3fff)*360)/16384;   //angle
-    printf("AGC=%X,Angle=%d\r\n",a,b);
+    c=(uint16_t)b;
+    printf("AGC=%X,Angle=%d\r\n",a,c);
     return b;
 }
 
@@ -255,9 +256,9 @@ float getVelocity(void)
 
     // calculate sample time
     now_us = SysTick->VAL; //_micros();
-    if(now_us<velocity_calc_timestamp)Ts = (float)(velocity_calc_timestamp - now_us)/9*1e-6;
+    if(now_us<velocity_calc_timestamp)Ts = (float)(velocity_calc_timestamp - now_us)/150*1e-6;
     else
-        Ts = (float)(0xFFFFFF - now_us + velocity_calc_timestamp)/9*1e-6;
+        Ts = (float)(0xFFFFFF - now_us + velocity_calc_timestamp)/150*1e-6;
     // quick fix for strange cases (micros overflow)
     if(Ts == 0 || Ts > 0.5) Ts = 1e-3;
 
