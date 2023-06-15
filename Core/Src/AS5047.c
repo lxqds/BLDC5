@@ -217,12 +217,12 @@ uint16_t Read_Register(uint16_t addr)
     temp_back =  SPIx_ReadWrite_Byte(addr,temp_back);
 
     AS5047_CS_H;
-    HAL_Delay(10);
+    HAL_Delay(1);
     AS5047_CS_L;
     back = SPIx_ReadWrite_Byte(0,back);
 
     AS5047_CS_H;
-    HAL_Delay(10);
+    HAL_Delay(1);
     return back;
 }
 uint16_t Write_Register(uint16_t addr,uint16_t data)

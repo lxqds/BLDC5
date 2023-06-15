@@ -221,9 +221,9 @@ void TIM2_IRQHandler(void)
         HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_0);
         Delay1ms=0;
     }
-
+    //Get_Angle2();
     //angleOpenloop(3.14);
-    velocityOpenloop(1.14f);
+    velocityOpenloop(3.14f);
 
   /* USER CODE END TIM2_IRQn 1 */
 }
@@ -241,7 +241,7 @@ void TIM4_IRQHandler(void)
     TIM4_10msflag=1;
     static uint16_t delay10ms=0;
     delay10ms++;
-    if(delay10ms==1000)
+    if(delay10ms==100)
     {
         delay10ms = 0;
         TIM4_1000msflag = 1;
