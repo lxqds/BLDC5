@@ -245,7 +245,7 @@ float Get_Angle2()
     a=Read_Register(0x3FFC)&0x0fff;     //AGC=>bit11:MAGL,bit10:MAGH,bit7-0:AGC   0x01AD
     b=((float)(Read_Register(0x3FFF)&0x3fff)*360)/16384;   //angle
     c=(uint16_t)b;
-    printf("AGC=%X,Angle=%d\r\n",a,c);
+   //printf("AGC=%X,Angle=%d\r\n",a,c);
     return b;
 }
 

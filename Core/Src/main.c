@@ -61,6 +61,8 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 extern float target;
+extern uint16_t TIM4_10msflag;
+extern uint16_t TIM4_1000msflag;
 uint16_t interval_count = 0;
 /* USER CODE END 0 */
 
@@ -96,7 +98,7 @@ int main(void)
   MX_TIM1_Init();
   MX_USART2_UART_Init();
   MX_TIM2_Init();
-  MX_TIM3_Init();
+  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
     Sensor_lnit();
 
@@ -113,13 +115,29 @@ int main(void)
   while (1)
   {
       {
-          static float th=0;
-          th = th +0.002;
-          if(th==_2PI)
-              th = 0;
-          setPhaseVoltage2(2,0,th);
 
-          //Get_Angle2();
+          /*static float th=0;
+          if(th<_2PI)
+          th = th +0.1;
+          if(th>=_2PI)
+              th = 0.1;
+
+          setPhaseVoltage2(2,0,th);*/
+             static float angle_last,angle;
+            static float speed;
+            if(TIM4_10msflag ==1)
+            {
+                TIM4_10msflag = 0;
+                angle = Get_Angle2();
+                speed = (abs(angle-angle_last))/0.001f;
+
+            }
+            if(TIM4_1000msflag ==1)
+            {
+                TIM4_1000msflag=0;
+                printf("\nangle_last:%f angle:%f speed:%f\n",angle_last,angle,speed);
+            }
+             angle_last = angle;
 
           /*move(50);
           loopFOC();*/

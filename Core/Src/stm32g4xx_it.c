@@ -24,6 +24,7 @@
 /* USER CODE BEGIN Includes */
 #include "foc.h"
 #include "retarget.h"
+#include "AS5047.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -33,7 +34,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+uint16_t TIM4_10msflag=0;
+uint16_t TIM4_1000msflag=0;
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -58,7 +60,7 @@
 
 /* External variables --------------------------------------------------------*/
 extern TIM_HandleTypeDef htim2;
-extern TIM_HandleTypeDef htim3;
+extern TIM_HandleTypeDef htim4;
 /* USER CODE BEGIN EV */
 
 /* USER CODE END EV */
@@ -211,23 +213,40 @@ void TIM2_IRQHandler(void)
   /* USER CODE END TIM2_IRQn 0 */
   HAL_TIM_IRQHandler(&htim2);
   /* USER CODE BEGIN TIM2_IRQn 1 */
+    static uint32_t Delay1ms=0;
+    Delay1ms++;
+    if(Delay1ms==1000)
+    {
+        printf("hello");
+        HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_0);
+        Delay1ms=0;
+    }
 
+    //angleOpenloop(3.14);
+    velocityOpenloop(1.14f);
 
   /* USER CODE END TIM2_IRQn 1 */
 }
 
 /**
-  * @brief This function handles TIM3 global interrupt.
+  * @brief This function handles TIM4 global interrupt.
   */
-void TIM3_IRQHandler(void)
+void TIM4_IRQHandler(void)
 {
-  /* USER CODE BEGIN TIM3_IRQn 0 */
+  /* USER CODE BEGIN TIM4_IRQn 0 */
 
-  /* USER CODE END TIM3_IRQn 0 */
-  HAL_TIM_IRQHandler(&htim3);
-  /* USER CODE BEGIN TIM3_IRQn 1 */
-
-  /* USER CODE END TIM3_IRQn 1 */
+  /* USER CODE END TIM4_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim4);
+  /* USER CODE BEGIN TIM4_IRQn 1 */
+    TIM4_10msflag=1;
+    static uint16_t delay10ms=0;
+    delay10ms++;
+    if(delay10ms==1000)
+    {
+        delay10ms = 0;
+        TIM4_1000msflag = 1;
+    }
+  /* USER CODE END TIM4_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */

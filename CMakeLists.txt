@@ -17,6 +17,7 @@ set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 project(BLDC5 C CXX ASM)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_STANDARD 11)
+set(COMMON_FLAGS "-specs=nosys.specs -specs=nano.specs -u _printf_float -u _scanf_float")
 
 #Uncomment for hardware floating point
 #add_compile_definitions(ARM_MATH_CM4;ARM_MATH_MATRIX_CHECK;ARM_MATH_ROUNDING)

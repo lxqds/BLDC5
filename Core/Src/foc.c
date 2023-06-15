@@ -16,7 +16,7 @@
 long sensor_direction;
 float voltage_sensor_align;
 
-int pole_pairs = 6;
+int pole_pairs = 7;
 float voltage_limit = 4;
 float voltage_power_supply = 12;
 
@@ -233,18 +233,8 @@ void setPhaseVoltage2(float Uq, float Ud, float angle_el) {
 //1ms
 float velocityOpenloop(float target_velocity)
 {
-    unsigned long now_us;
-    float Ts =  100*(1e-6f);//10us
-
-    now_us = SysTick->VAL; //_micros();
-    if (now_us < open_loop_timestamp)Ts = (float) (open_loop_timestamp - now_us) / frequency_divider * 1e-6;//150分频
-    else
-        Ts = (float) (0xFFFFFF - now_us + open_loop_timestamp) / frequency_divider * 1e-6;//150分频
-    open_loop_timestamp = now_us;  //save timestamp for next call
-
-    shaft_angle = _normalizeAngle2(shaft_angle + target_velocity*Ts);//计算所需转动的机械角度，
-
-    if (Ts == 0 || Ts > 0.5) Ts = 1e-3;
+    float x_s = 1e-3;
+    shaft_angle = _normalizeAngle2(shaft_angle + target_velocity*x_s);//计算所需转动的机械角度，
 
     float Uq = voltage_limit;
 
@@ -544,7 +534,7 @@ void foc_Init()
 {
 
     voltage_power_supply = 12;   //V
-    voltage_limit = 4;           //V，最大值需小于12/1.732=6.9
+    voltage_limit = 3;           //V，最大值需小于12/1.732=6.9
     velocity_limit = 10;         //rad/s angleOpenloop() and PID_angle() use it 速度限制
     voltage_sensor_align = 0.5;    //V     alignSensor() and driverAlign() use it，大功率电机0.5-1，小功率电机2-3
     torque_controller = Type_voltage;  //当前只有电压模式
