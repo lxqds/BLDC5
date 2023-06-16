@@ -241,7 +241,7 @@ void TIM4_IRQHandler(void)
     TIM4_10msflag=1;
     static uint16_t delay10ms=0;
     delay10ms++;
-    if(delay10ms==100)
+    if(delay10ms==10)
     {
         delay10ms = 0;
         TIM4_1000msflag = 1;

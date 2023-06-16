@@ -17,10 +17,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e23143c5-3df2-4a48-9b8f-f76c1e4bc1ba" name="Changes" comment="开环速度控制，spi存在问题">
+    <list default="true" id="e23143c5-3df2-4a48-9b8f-f76c1e4bc1ba" name="Changes" comment="开环速度控制，角速度读取较正常">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BLDC5.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/BLDC5.ioc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/AS5047.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/AS5047.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/stm32g4xx_it.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/stm32g4xx_it.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/tim.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/tim.c" afterDir="false" />
@@ -32,7 +31,6 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/BLDC5.map" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/BLDC5.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/AS5047.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/AS5047.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/main.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/stm32g4xx_it.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BLDC5.elf.dir/Core/Src/tim.c.obj" afterDir="false" />
@@ -133,7 +131,7 @@
       <workItem from="1686462203002" duration="13638000" />
       <workItem from="1686535132669" duration="45410000" />
       <workItem from="1686733279801" duration="2265000" />
-      <workItem from="1686735575987" duration="31104000" />
+      <workItem from="1686735575987" duration="35525000" />
     </task>
     <task id="LOCAL-00001" summary="读取电机角度">
       <created>1686546314615</created>
@@ -191,7 +189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686841189111</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="开环速度控制，角速度读取较正常">
+      <created>1686842231972</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1686842231972</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,6 +234,7 @@
     <MESSAGE value="修复开环角度控制，但是不精确" />
     <MESSAGE value="开环低转速" />
     <MESSAGE value="开环速度控制，spi存在问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="开环速度控制，spi存在问题" />
+    <MESSAGE value="开环速度控制，角速度读取较正常" />
+    <option name="LAST_COMMIT_MESSAGE" value="开环速度控制，角速度读取较正常" />
   </component>
 </project>

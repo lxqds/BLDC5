@@ -129,7 +129,7 @@ int main(void)
             {
                 TIM4_10msflag = 0;
                 angle = Get_Angle2();
-                speed = (abs(angle-angle_last))/0.01f;
+                speed = (abs(angle-angle_last))/0.1f;
 
             }
             if(TIM4_1000msflag ==1)
